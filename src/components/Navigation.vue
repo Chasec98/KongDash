@@ -4,9 +4,9 @@
       <v-list-item link>
         <v-list-item-content>
           <v-list-item-title class="title">
-            Sandra Adams
+            Chase Carter
           </v-list-item-title>
-          <v-list-item-subtitle>sandra_a88@gmail.com</v-list-item-subtitle>
+          <v-list-item-subtitle>ccarter98@gmail.com</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -55,7 +55,7 @@ export default {
       {
         icon: "mdi-certificate",
         title: "Certificates",
-        certificates: "/certificates"
+        link: "/certificates"
       }
     ]
   })

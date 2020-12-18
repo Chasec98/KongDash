@@ -1,8 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Dashboard from "../views/Dashboard"
-import Services from "../views/Services"
-import Routes from "../views/Routes"
+import Dashboard from "../views/Dashboard";
+import Services from "../views/Services";
+import Routes from "../views/Routes";
+import Plugins from "../views/Plugins";
+import Upstreams from "../views/Upstreams";
 
 Vue.use(VueRouter);
 
@@ -21,6 +23,16 @@ const routes = [
     path: "/routes",
     name: "Routes",
     component: Routes
+  },
+  {
+    path: "/plugins",
+    name: "Plugins",
+    component: Plugins
+  },
+  {
+    path: "/upstreams",
+    name: "Upstreams",
+    component: Upstreams
   }
 ];
 
