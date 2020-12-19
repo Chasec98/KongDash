@@ -16,8 +16,18 @@ const actions = {
   },
   deleteRoute({dispatch}, routeId) {
       Vue.axios.delete("/routes/" + routeId).then(() => {
-        dispatch('getRoutes')
+        dispatch('getRoutes');
       })
+  },
+  updateRoute({dispatch}, route) {
+    Vue.axios.put("/routes/"+ route.id, route).then(() => {
+      dispatch('getRoutes');
+    })
+  },
+  createRoute({dispatch}, route) {
+    Vue.axios.post("/routes", route).then(() => {
+      dispatch('getRoutes');
+    })
   }
 };
 

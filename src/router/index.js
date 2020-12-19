@@ -5,6 +5,7 @@ import Services from "../views/Services";
 import Routes from "../views/Routes";
 import Plugins from "../views/Plugins";
 import Upstreams from "../views/Upstreams";
+import Consumers from "../views/Consumers";
 
 Vue.use(VueRouter);
 
@@ -18,6 +19,11 @@ const routes = [
     path: "/services",
     name: "Services",
     component: Services
+  },
+  {
+    path: "/consumers",
+    name: "Consumers",
+    component: Consumers
   },
   {
     path: "/routes",

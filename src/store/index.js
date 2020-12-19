@@ -6,6 +6,7 @@ import plugins from "./modules/plugins";
 import upstreams from "./modules/upstreams";
 import certificates from "./modules/certificates";
 import targets from "./modules/targets";
+import consumers from "./modules/consumers";
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     plugins,
     upstreams,
     certificates,
-    targets
+    targets,
+    consumers
   }
 });

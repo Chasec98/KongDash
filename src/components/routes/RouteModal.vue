@@ -1,4 +1,5 @@
 <template>
+    <!-- SNIs -->
     <v-card class="modal">
         <v-card-title>{{title}}</v-card-title>
         <v-container>
@@ -88,7 +89,7 @@ export default {
               name: undefined,
               protocols: undefined,
               methods: undefined,
-              tags: undefined,
+              tags: [],
               hosts: undefined,
               paths: undefined,
               strip_path: true,
@@ -157,6 +158,9 @@ export default {
                 return "New Route"
             }
         }
+    },
+    mounted() {
+        this.$store.dispatch("services/getServices");
     }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer expand-on-hover app>
+  <v-navigation-drawer expand-on-hover app >
     <v-list>
       <v-list-item link>
         <v-list-item-content>
@@ -36,6 +36,11 @@ export default {
         icon: "mdi-cloud",
         title: "Services",
         link: "/services"
+      },
+      {
+        icon: "mdi-account-group",
+        title: "Consumers",
+        link: "/consumers"
       },
       {
         icon: "mdi-arrow-decision",
