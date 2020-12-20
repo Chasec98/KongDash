@@ -130,6 +130,7 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
+import constants from "../../constants";
 export default {
   props: {
     route: {
@@ -152,19 +153,9 @@ export default {
     }
   },
   data: () => ({
-    methods: [
-      "POST",
-      "GET",
-      "PUT",
-      "HEAD",
-      "DELETE",
-      "CONNECT",
-      "OPTIONS",
-      "TRACE",
-      "PATCH"
-    ],
-    protocols: ["https", "http", "tcp", "tls", "udp", "grpc", "grpcs"],
-    pathHandlers: ["v0", "v1"]
+    methods: constants.methods,
+    protocols: constants.protocols,
+    pathHandlers: constants.pathHandlers,
   }),
   methods: {
     ...mapActions("routes", ["updateRoute", "createRoute"]),
@@ -180,7 +171,8 @@ export default {
       this.$emit("cancel");
     },
     formatServiceText(service) {
-      return service.name + " - " + service.id;
+      const name = this.services.find(x => x.id === service.id).name;
+      return name + " - " + service.id;
     }
   },
   computed: {

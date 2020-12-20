@@ -39,6 +39,7 @@
 </template>
 <script>
 import { mapActions } from "vuex";
+import constants from "../../constants";
 export default {
   props: {
     upstream: {
@@ -59,8 +60,8 @@ export default {
     }
   },
   data: () => ({
-    algorithms: ["round-robin", "consistent-hashing", "least-connections"],
-    hashOptions: ["none", "consumer", "ip", "header", "cookie"]
+    algorithms: constants.algorithms,
+    hashOptions: constants.hashOptions,
   }),
   methods: {
     ...mapActions("upstreams", ["updateUpstream", "createUpstream"]),

@@ -111,6 +111,7 @@
 </template>
 <script>
 import { mapActions } from "vuex";
+import constants from "../../constants";
 export default {
   props: {
     service: {
@@ -133,7 +134,7 @@ export default {
     }
   },
   data: () => ({
-    protocols: ["https", "http", "tcp", "tls", "udp", "grpc", "grpcs"]
+    protocols: constants.protocols,
   }),
   methods: {
     ...mapActions("services", ["updateService", "createService"]),
