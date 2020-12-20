@@ -8,16 +8,34 @@ const state = () => ({
 const getters = {};
 
 const actions = {
-  getUpstreams({ commit }) {
+  getUpstreams({ commit, dispatch }) {
     Vue.axios.get("/upstreams").then(resp => {
       commit("setUpstreams", resp.data.data);
       commit("setNext", resp.data.next);
+    }).catch((err) => {
+      dispatch("snackbar/addMessage", "Error getting upstreams: " + err.response.data.message, { root: true });
     });
   },
   deleteUpstream({dispatch}, serviceId) {
     Vue.axios.delete("/upstreams/" + serviceId).then(() => {
       dispatch('getUpstreams')
-    })
+    }).catch((err) => {
+      dispatch("snackbar/addMessage", "Error deleting upstream: " + err.response.data.message, { root: true });
+    });
+  },
+  updateUpstream({dispatch}, upstream) {
+    Vue.axios.put("/upstreams/"+ upstream.id, upstream).then(() => {
+      dispatch('getUpstreams');
+    }).catch((err) => {
+      dispatch("snackbar/addMessage", "Error updating upstream: " + err.response.data.message, { root: true });
+    });
+  },
+  createUpstream({dispatch}, upstream) {
+    Vue.axios.post("/upstreams", upstream).then(() => {
+      dispatch('getUpstreams');
+    }).catch((err) => {
+      dispatch("snackbar/addMessage", "Error creating upstream: " + err.response.data.message, { root: true });
+    });
   }
 };
 

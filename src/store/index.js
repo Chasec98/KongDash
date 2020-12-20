@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import snackbar from "./modules/snackbar";
 import services from "./modules/services";
 import routes from "./modules/routes";
 import plugins from "./modules/plugins";
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     upstreams,
     certificates,
     targets,
-    consumers
+    consumers,
+    snackbar,
   }
 });

@@ -1,8 +1,14 @@
 <template>
-  <Table title="Upsteams" :headers="headers" :data="upstreams" @delete="deleteService" />
+<div>
+  <Table title="Upsteams" :headers="headers" :data="upstreams" @edit="editUpstream" @add="addUpstream" @delete="deleteUpstream" />
+  <v-dialog width="500" v-model="upstreamModalOpen">
+      <UpstreamModal :upstream="selectedUpstream" @cancel="closeUpstream" />
+  </v-dialog>
+</div>
 </template>
 <script>
 import Table from "../components/Table";
+import UpstreamModal from "../components/upstreams/UpstreamModal";
 import { mapState, mapActions } from "vuex";
 export default {
   data: () => ({
@@ -10,10 +16,13 @@ export default {
       { text: "Name", value: "name" },
       { text: "Algorithm", value: "algorithm" },
       { text: "ID", value: "id" }
-    ]
+    ],
+    selectedUpstream: undefined,
+    upstreamModalOpen: undefined,
   }),
   components: {
-    Table
+    Table,
+    UpstreamModal,
   },
   created() {
     this.$store.dispatch("upstreams/getUpstreams");
@@ -21,8 +30,23 @@ export default {
   computed: mapState({
     upstreams: state => state.upstreams.data
   }),
-  methods: mapActions('upstreams', [
-    'deleteUpstream'
-  ]),
+  methods: {
+    ...mapActions('upstreams', [
+      'deleteUpstream'
+    ]),
+    closeUpstream() {
+      this.upstreamModalOpen = false;
+      this.selectedUpstream = undefined;
+
+    },
+    editUpstream(upstream) {
+      this.selectedUpstream = upstream;
+      this.upstreamModalOpen = true;
+    },
+    addUpstream() {
+      this.selectedUpstream = undefined;
+      this.upstreamModalOpen = true;
+    },
+  }
 };
 </script>

@@ -7,13 +7,13 @@
     <v-main>
       <router-view></router-view>
     </v-main>
-    <v-snackbar v-model="snackbar">testing snackbar
+    <v-snackbar multi-line v-model="snackbarOpen">{{message}}
       <template v-slot:action="{ attrs }">
         <v-btn
           color="primary"
           text
           v-bind="attrs"
-          @click="snackbar = false"
+          @click="close"
         >
           Close
         </v-btn>
@@ -24,14 +24,24 @@
 
 <script>
 import Navigation from "./components/Navigation";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "App",
   data: () => ({
-    snackbar: true,
+    //
   }),
   components: {
     Navigation,
-  }
+  },
+  methods: {
+    ...mapActions('snackbar', [
+      'close'
+    ])
+  },
+  computed: mapState({
+    message: state => state.snackbar.message,
+    snackbarOpen: state => state.snackbar.open
+  }),
 };
 </script>
