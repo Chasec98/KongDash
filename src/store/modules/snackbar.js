@@ -1,18 +1,18 @@
 const state = () => ({
   message: "",
-  open: false,
+  open: false
 });
 
 const getters = {};
 
 const actions = {
-  addMessage({commit}, message){
-      commit("addMessage", message);
-      commit("openSnackbar");
+  addMessage({ commit }, message) {
+    commit("addMessage", message);
+    commit("openSnackbar");
   },
-  close({commit}) {
-      commit("closeSnackbar");
-      commit("clearMessages");
+  close({ commit }) {
+    commit("closeSnackbar");
+    commit("clearMessages");
   }
 };
 

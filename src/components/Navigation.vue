@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer expand-on-hover app >
+  <v-navigation-drawer expand-on-hover app>
     <v-list>
       <v-list-item link>
         <v-list-item-content>

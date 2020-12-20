@@ -1,9 +1,16 @@
 <template>
   <div>
-  <Table title="Services" :headers="headers" :data="services" @edit="editService" @add="addService" @delete="deleteService" />
-  <v-dialog width="500" v-model="serviceModalOpen">
+    <Table
+      title="Services"
+      :headers="headers"
+      :data="services"
+      @edit="editService"
+      @add="addService"
+      @delete="deleteService"
+    />
+    <v-dialog width="500" v-model="serviceModalOpen">
       <ServiceModal :service="selectedService" @cancel="closeServiceModal" />
-  </v-dialog>
+    </v-dialog>
   </div>
 </template>
 <script>
@@ -33,20 +40,18 @@ export default {
     services: state => state.services.data
   }),
   methods: {
-    ...mapActions('services', [
-      'deleteService'
-    ]),
+    ...mapActions("services", ["deleteService"]),
     editService(service) {
-      this.selectedService = service
-      this.serviceModalOpen = true
+      this.selectedService = service;
+      this.serviceModalOpen = true;
     },
     closeServiceModal() {
-      this.serviceModalOpen = false
-      this.selectedService = undefined
+      this.serviceModalOpen = false;
+      this.selectedService = undefined;
     },
     addService() {
-      this.selectedService = undefined
-      this.serviceModalOpen = true
+      this.selectedService = undefined;
+      this.serviceModalOpen = true;
     }
   }
 };

@@ -1,20 +1,16 @@
 <template>
   <v-app>
     <v-app-bar dense app v-if="$vuetify.breakpoint.mdAndDown">
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
     </v-app-bar>
     <Navigation />
     <v-main>
       <router-view></router-view>
     </v-main>
-    <v-snackbar multi-line v-model="snackbarOpen">{{message}}
+    <v-snackbar multi-line v-model="snackbarOpen"
+      >{{ message }}
       <template v-slot:action="{ attrs }">
-        <v-btn
-          color="primary"
-          text
-          v-bind="attrs"
-          @click="close"
-        >
+        <v-btn color="primary" text v-bind="attrs" @click="close">
           Close
         </v-btn>
       </template>
@@ -32,16 +28,14 @@ export default {
     //
   }),
   components: {
-    Navigation,
+    Navigation
   },
   methods: {
-    ...mapActions('snackbar', [
-      'close'
-    ])
+    ...mapActions("snackbar", ["close"])
   },
   computed: mapState({
     message: state => state.snackbar.message,
     snackbarOpen: state => state.snackbar.open
-  }),
+  })
 };
 </script>

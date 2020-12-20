@@ -8,34 +8,62 @@ const state = () => ({
 const getters = {};
 
 const actions = {
-  getRoutes({commit, dispatch}) {
-    Vue.axios.get("/routes").then(resp => {
-      commit("setRoutes", resp.data.data);
-      commit("setNext", resp.data.next);
-    }).catch((err) => {
-      dispatch("snackbar/addMessage", "Error getting routes: " + err.response.data.message, { root: true });
-    });
-  },
-  deleteRoute({dispatch}, routeId) {
-      Vue.axios.delete("/routes/" + routeId).then(() => {
-        dispatch('getRoutes');
-      }).catch((err) => {
-        dispatch("snackbar/addMessage", "Error deleting route: " + err.response.data.message, { root: true });
+  getRoutes({ commit, dispatch }) {
+    Vue.axios
+      .get("/routes")
+      .then(resp => {
+        commit("setRoutes", resp.data.data);
+        commit("setNext", resp.data.next);
+      })
+      .catch(err => {
+        dispatch(
+          "snackbar/addMessage",
+          "Error getting routes: " + err.response.data.message,
+          { root: true }
+        );
       });
   },
-  updateRoute({dispatch}, route) {
-    Vue.axios.put("/routes/"+ route.id, route).then(() => {
-      dispatch('getRoutes');
-    }).catch((err) => {
-      dispatch("snackbar/addMessage", "Error updating route: " + err.response.data.message, { root: true });
-    });
+  deleteRoute({ dispatch }, routeId) {
+    Vue.axios
+      .delete("/routes/" + routeId)
+      .then(() => {
+        dispatch("getRoutes");
+      })
+      .catch(err => {
+        dispatch(
+          "snackbar/addMessage",
+          "Error deleting route: " + err.response.data.message,
+          { root: true }
+        );
+      });
   },
-  createRoute({dispatch}, route) {
-    Vue.axios.post("/routes", route).then(() => {
-      dispatch('getRoutes');
-    }).catch((err) => {
-      dispatch("snackbar/addMessage", "Error creating route: " + err.response.data.message, { root: true });
-    });
+  updateRoute({ dispatch }, route) {
+    Vue.axios
+      .put("/routes/" + route.id, route)
+      .then(() => {
+        dispatch("getRoutes");
+      })
+      .catch(err => {
+        dispatch(
+          "snackbar/addMessage",
+          "Error updating route: " + err.response.data.message,
+          { root: true }
+        );
+      });
+  },
+  createRoute({ dispatch }, route) {
+    Vue.axios
+      .post("/routes", route)
+      .then(() => {
+        dispatch("getRoutes");
+      })
+      .catch(err => {
+        dispatch(
+          "snackbar/addMessage",
+          "Error creating route: " + err.response.data.message,
+          { root: true }
+        );
+      });
   }
 };
 

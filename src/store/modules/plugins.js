@@ -14,10 +14,20 @@ const actions = {
       commit("setNext", resp.data.next);
     });
   },
-  deletePlugin({dispatch}, pluginId) {
+  deletePlugin({ dispatch }, pluginId) {
     Vue.axios.delete("/plugins/" + pluginId).then(() => {
-      dispatch('getPlugins')
-    })
+      dispatch("getPlugins");
+    });
+  },
+  createPlugin({ dispatch }, plugin) {
+    Vue.axios.post("/plugins", plugin).then(() => {
+      dispatch("getPlugins");
+    });
+  },
+  editPlugin({ dispatch }, plugin) {
+    Vue.axios.put("/plugins/" + plugin.id, plugin).then(() => {
+      dispatch("getPlugins");
+    });
   }
 };
 

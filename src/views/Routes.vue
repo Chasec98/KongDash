@@ -1,9 +1,16 @@
 <template>
   <div>
-    <Table title="Routes" :data="routes" :headers="headers" @edit="editRoute" @add="addRoute" @delete="deleteRoute"/>
+    <Table
+      title="Routes"
+      :data="routes"
+      :headers="headers"
+      @edit="editRoute"
+      @add="addRoute"
+      @delete="deleteRoute"
+    />
     <v-dialog width="500" v-model="routeModalOpen">
       <RouteModal :route="selectedRoute" @cancel="closeRouteModal" />
-  </v-dialog>
+    </v-dialog>
   </div>
 </template>
 <script>
@@ -11,18 +18,18 @@ import Table from "../components/Table";
 import RouteModal from "../components/routes/RouteModal";
 import { mapState, mapActions } from "vuex";
 export default {
-    data: () => ({
-        headers: [
-          { text: "Name", value: "name" },
-          { text: "Protocols", value: "protocols" },
-          { text: "Methods", value: "methods" },
-          { text: "Hosts", value: "hosts" },
-          { text: "Paths", value: "paths" },
-          { text: "ID", value: "id" }
-        ],
-        selectedRoute: undefined,
-        routeModalOpen: false
-    }),
+  data: () => ({
+    headers: [
+      { text: "Name", value: "name" },
+      { text: "Protocols", value: "protocols" },
+      { text: "Methods", value: "methods" },
+      { text: "Hosts", value: "hosts" },
+      { text: "Paths", value: "paths" },
+      { text: "ID", value: "id" }
+    ],
+    selectedRoute: undefined,
+    routeModalOpen: false
+  }),
   components: {
     Table,
     RouteModal
@@ -31,24 +38,22 @@ export default {
     this.$store.dispatch("routes/getRoutes");
   },
   computed: mapState({
-    routes: state => state.routes.data,
+    routes: state => state.routes.data
   }),
   methods: {
-    ...mapActions('routes', [
-      'deleteRoute'
-    ]),
+    ...mapActions("routes", ["deleteRoute"]),
     closeRouteModal() {
-      this.routeModalOpen = false
-      this.selectedRoute = undefined
+      this.routeModalOpen = false;
+      this.selectedRoute = undefined;
     },
     addRoute() {
-      this.selectedRoute = undefined
-      this.routeModalOpen = true
+      this.selectedRoute = undefined;
+      this.routeModalOpen = true;
     },
     editRoute(route) {
-      this.selectedRoute = route
-      this.routeModalOpen = true
+      this.selectedRoute = route;
+      this.routeModalOpen = true;
     }
-  } 
+  }
 };
 </script>

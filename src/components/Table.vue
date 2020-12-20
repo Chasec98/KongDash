@@ -1,6 +1,7 @@
 <template>
   <v-card>
-    <v-card-title>{{title}}
+    <v-card-title
+      >{{ title }}
       <v-spacer></v-spacer>
       <v-btn @click="addClicked" color="primary">New</v-btn>
     </v-card-title>
@@ -21,7 +22,7 @@
         </v-btn>
       </template>
       <template v-slot:[`item.id`]="{ item }">
-        {{item.id}}
+        {{ item.id }}
         <v-btn icon color="primary">
           <v-icon>mdi-clipboard-text</v-icon>
         </v-btn>
@@ -35,27 +36,25 @@ export default {
     data: Array,
     headers: Array,
     title: String,
-    subTitle: String,
+    subTitle: String
   },
   data: () => ({
-    extraHeaders: [
-      { text: "", value: "buttons" }
-    ]
+    extraHeaders: [{ text: "", value: "buttons" }]
   }),
   methods: {
-    editClicked(item){
-      this.$emit('edit', item)
+    editClicked(item) {
+      this.$emit("edit", item);
     },
-    deleteClicked(id){
-      this.$emit('delete', id)
+    deleteClicked(id) {
+      this.$emit("delete", id);
     },
-    addClicked(){
-      this.$emit('add')
+    addClicked() {
+      this.$emit("add");
     }
   },
   computed: {
     allHeaders() {
-      return this.headers.concat(this.extraHeaders)
+      return this.headers.concat(this.extraHeaders);
     }
   }
 };

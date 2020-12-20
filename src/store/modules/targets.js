@@ -8,8 +8,8 @@ const state = () => ({
 const getters = {};
 
 const actions = {
-  getTargets({commit}, upstreamId) {
-    Vue.axios.get("/upstreams/"+upstreamId+"/targets").then(resp => {
+  getTargets({ commit }, upstreamId) {
+    Vue.axios.get("/upstreams/" + upstreamId + "/targets").then(resp => {
       commit("setRoutes", resp.data.data);
       commit("setNext", resp.data.next);
     });

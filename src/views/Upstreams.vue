@@ -1,10 +1,17 @@
 <template>
-<div>
-  <Table title="Upsteams" :headers="headers" :data="upstreams" @edit="editUpstream" @add="addUpstream" @delete="deleteUpstream" />
-  <v-dialog width="500" v-model="upstreamModalOpen">
+  <div>
+    <Table
+      title="Upsteams"
+      :headers="headers"
+      :data="upstreams"
+      @edit="editUpstream"
+      @add="addUpstream"
+      @delete="deleteUpstream"
+    />
+    <v-dialog width="500" v-model="upstreamModalOpen">
       <UpstreamModal :upstream="selectedUpstream" @cancel="closeUpstream" />
-  </v-dialog>
-</div>
+    </v-dialog>
+  </div>
 </template>
 <script>
 import Table from "../components/Table";
@@ -18,11 +25,11 @@ export default {
       { text: "ID", value: "id" }
     ],
     selectedUpstream: undefined,
-    upstreamModalOpen: undefined,
+    upstreamModalOpen: undefined
   }),
   components: {
     Table,
-    UpstreamModal,
+    UpstreamModal
   },
   created() {
     this.$store.dispatch("upstreams/getUpstreams");
@@ -31,13 +38,10 @@ export default {
     upstreams: state => state.upstreams.data
   }),
   methods: {
-    ...mapActions('upstreams', [
-      'deleteUpstream'
-    ]),
+    ...mapActions("upstreams", ["deleteUpstream"]),
     closeUpstream() {
       this.upstreamModalOpen = false;
       this.selectedUpstream = undefined;
-
     },
     editUpstream(upstream) {
       this.selectedUpstream = upstream;
@@ -46,7 +50,7 @@ export default {
     addUpstream() {
       this.selectedUpstream = undefined;
       this.upstreamModalOpen = true;
-    },
+    }
   }
 };
 </script>

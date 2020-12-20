@@ -14,20 +14,20 @@ const actions = {
       commit("setNext", resp.data.next);
     });
   },
-  deleteConsumer({dispatch}, consumerId) {
+  deleteConsumer({ dispatch }, consumerId) {
     Vue.axios.delete("/consumers/" + consumerId).then(() => {
-      dispatch('getConsumers')
-    })
+      dispatch("getConsumers");
+    });
   },
-  updateConsumer({dispatch}, consumer) {
-    Vue.axios.put("/consumers/"+ consumer.id, consumer).then(()=> {
-      dispatch('getConsumers')
-    })
+  updateConsumer({ dispatch }, consumer) {
+    Vue.axios.put("/consumers/" + consumer.id, consumer).then(() => {
+      dispatch("getConsumers");
+    });
   },
-  createConsumer({dispatch}, consumer) {
+  createConsumer({ dispatch }, consumer) {
     Vue.axios.post("/consumers", consumer).then(() => {
-      dispatch('getConsumers')
-    })
+      dispatch("getConsumers");
+    });
   }
 };
 

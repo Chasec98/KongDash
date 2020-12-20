@@ -8,16 +8,16 @@ const state = () => ({
 const getters = {};
 
 const actions = {
-  getCertificates({commit}) {
+  getCertificates({ commit }) {
     Vue.axios.get("/certificates").then(resp => {
       commit("setCertificates", resp.data.data);
       commit("setNext", resp.data.next);
     });
   },
-  deleteCertificate({dispatch}, certificateId) {
-      Vue.axios.delete("/certificates/" + certificateId).then(() => {
-        dispatch('getCertificates')
-      })
+  deleteCertificate({ dispatch }, certificateId) {
+    Vue.axios.delete("/certificates/" + certificateId).then(() => {
+      dispatch("getCertificates");
+    });
   }
 };
 
