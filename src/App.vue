@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar color="primary" dense flat app v-if="$vuetify.breakpoint.mdAndDown">
+    <v-app-bar color="primary" dense flat dark app v-if="$vuetify.breakpoint.mdAndDown">
       <v-app-bar-nav-icon @click="toggleTopBar"></v-app-bar-nav-icon>
     </v-app-bar>
     <Navigation @transitioned="toggleNav" :open="leftBarOpen" />

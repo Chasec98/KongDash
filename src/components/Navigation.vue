@@ -3,10 +3,10 @@
     <v-list>
       <v-list-item link>
         <v-list-item-content>
-          <v-list-item-title class="title">
+          <v-list-item-title class="title white--text">
             Chase Carter
           </v-list-item-title>
-          <v-list-item-subtitle>ccarter98@gmail.com</v-list-item-subtitle>
+          <v-list-item-subtitle class="white--text">ccarter98@gmail.com</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -16,9 +16,9 @@
     <v-list nav dense>
       <v-list-item link v-for="item in items" :key="item.link" :to="item.link">
         <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
+          <v-icon class="white--text">{{ item.icon }}</v-icon>
         </v-list-item-icon>
-        <v-list-item-title>{{ item.title }}</v-list-item-title>
+        <v-list-item-title class="white--text">{{ item.title }}</v-list-item-title>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
