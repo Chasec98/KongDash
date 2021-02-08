@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer expand-on-hover app>
+  <v-navigation-drawer color="primary" v-model="open" expand-on-hover app>
     <v-list>
       <v-list-item link>
         <v-list-item-content>
@@ -25,6 +25,14 @@
 </template>
 <script>
 export default {
+  props: {
+    open: Boolean
+  },
+  watch: {
+    open: function(value) {
+      this.$emit('transitioned', value)
+    }
+  },
   data: () => ({
     items: [
       {
