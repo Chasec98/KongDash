@@ -1,8 +1,11 @@
 <template>
-    <Modal @cancel="cancelClicked" title="Basic Authentication Plugin" :fields="fields" />
+<div>
+    <Modal @cancel="cancelClicked" title="Basic Authentication Plugin" :fields="fields" v-if="services" />
+{{services}}
+</div>
 </template>
 <script>
-import Modal from "../Modal"
+import Modal from "../Modal";
 export default {
     components: {
         Modal
@@ -23,6 +26,17 @@ export default {
             {
                 type: "select",
                 label: "Route",
+                value: undefined,
+                number: false,
+            },
+            {
+                type: "switch",
+                label: "Hide Credentials",
+                value: false,
+            },
+            {
+                type: "text-field",
+                label: "Anonymous Consumer",
                 value: undefined,
                 number: false,
             },

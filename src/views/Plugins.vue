@@ -13,12 +13,16 @@
     <v-dialog width="500" v-model="sessionModalOpen">
       <SessionPlugin v-if="sessionModalOpen" @cancel="sessionModalOpen = false" />
     </v-dialog>
+    <v-dialog width="500" v-model="basicAuthModalOpen">
+      <BasicAuthPlugin v-if="basicAuthModalOpen" @cancel="basicAuthModalOpen = false" />
+    </v-dialog>
   </div>
 </template>
 <script>
 import Table from "../components/Table";
 import SelectPluginModal from "../components/plugins/SelectPluginModal"
 import SessionPlugin from "../components/plugins/SessionPlugin"
+import BasicAuthPlugin from "../components/plugins/BasicAuthPlugin"
 import { mapState, mapActions } from "vuex";
 export default {
   data: () => ({
@@ -31,11 +35,13 @@ export default {
     ],
     selectPluginModalOpen: false,
     sessionModalOpen: false,
+    basicAuthModalOpen: false,
   }),
   components: {
     Table,
     SelectPluginModal,
-    SessionPlugin
+    SessionPlugin,
+    BasicAuthPlugin
   },
   created() {
     this.$store.dispatch("plugins/getPlugins");
@@ -54,6 +60,8 @@ export default {
     openPluginModal(plugin) {
       if (plugin.value === "session") {
         this.sessionModalOpen = true;
+      } else if (plugin.value === "basic-auth") {
+        this.basicAuthModalOpen = true;
       }
     }
   }
