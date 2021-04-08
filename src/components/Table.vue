@@ -13,6 +13,12 @@
       item-key="id"
       class="elevation-1"
     >
+      <template v-slot:[`item.service`]="{ item }">
+        {{safeNull(item.service)}}
+      </template>
+      <template v-slot:[`item.route`]="{ item }">
+        {{safeNull(item.route)}}
+      </template>
       <template v-slot:[`item.buttons`]="{ item }">
         <v-btn @click="editClicked(item)" icon color="secondary">
           <v-icon>mdi-pencil</v-icon>
@@ -50,6 +56,13 @@ export default {
     },
     addClicked() {
       this.$emit("add");
+    },
+    safeNull(e) {
+      if (e) {
+        return e.id
+      } else {
+        return ""
+      }
     }
   },
   computed: {

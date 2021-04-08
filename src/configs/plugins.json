@@ -1,0 +1,517 @@
+[
+    {
+        "displayName": "Session",
+        "name": "session",
+        "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_session.png",
+        "parameters": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "default": "session",
+                "editable": false,
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "service",
+                "displayName": "Service",
+                "default": null,
+                "editable": true,
+                "type": "Services"
+            },
+            {
+                "name": "route",
+                "displayName": "Route",
+                "default": null,
+                "editable": true,
+                "type": "Routes"
+            },
+            {
+                "name": "enabled",
+                "displayName": "Enabled",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.secret",
+                "displayName": "Secret",
+                "default": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.cookie_name",
+                "displayName": "Cookie Name",
+                "default": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.cookie_lifetime",
+                "displayName": "Cookie Lifetime",
+                "default": 3600,
+                "editable": true,
+                "type": "Number"
+            },
+            {
+                "name": "config.cookie_idletime",
+                "displayName": "Cookie Idletime",
+                "default": null,
+                "editable": true,
+                "type": "Number"
+            },
+            {
+                "name": "config.cookie_renew",
+                "displayName": "Cookie Renew",
+                "default": 600,
+                "editable": true,
+                "type": "Number"
+            }
+        ]
+    },
+    {
+        "displayName": "Key Authentication",
+        "name":"key-auth",
+        "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_key-auth.png",
+        "parameters": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "default": "key-auth",
+                "editable": false,
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "service",
+                "displayName": "Service",
+                "default": null,
+                "editable": true,
+                "type": "Services"
+            },
+            {
+                "name": "route",
+                "displayName": "Route",
+                "default": null,
+                "editable": true,
+                "type": "Routes"
+            },
+            {
+                "name": "enabled",
+                "displayName": "Enabled",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.key_names",
+                "displayName": "Key Names",
+                "default": ["apikey"],
+                "editable": true,
+                "type": "Combobox"
+            },
+            {
+                "name": "config.key_in_body",
+                "displayName": "Key in Body *",
+                "default": false,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {   
+                "name": "config.key_in_header",
+                "displayName": "Key in Header *",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.key_in_query",
+                "displayName": "Key in Query *",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.hide_credentials",
+                "displayName": "Hide Credentials *",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.anonymous",
+                "displayName": "Anonymous *",
+                "default": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.run_on_preflight",
+                "displayName": "Run on Preflight *",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            }
+        ]
+    },
+    {
+        "displayName": "Basic Authentication",
+        "name":"basic-auth",
+        "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_basic-auth.png",
+        "parameters": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "default": "basic-auth",
+                "editable": false,
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "service",
+                "displayName": "Service",
+                "default": null,
+                "editable": true,
+                "type": "Services"
+            },
+            {
+                "name": "route",
+                "displayName": "Route",
+                "default": null,
+                "editable": true,
+                "type": "Routes"
+            },
+            {
+                "name": "enabled",
+                "displayName": "Enabled",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.hide_credentials",
+                "displayName": "Hide Credentials *",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.anonymous",
+                "displayName": "Anonymous *",
+                "default": null,
+                "editable": true,
+                "type": "String"
+            }
+        ]
+    },
+    {
+        "displayName": "Prometheus",
+        "name":"prometheus",
+        "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_prometheus.png",
+        "parameters": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "default": "prometheus",
+                "editable": false,
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "service",
+                "displayName": "Service",
+                "default": null,
+                "editable": true,
+                "type": "Services"
+            },
+            {
+                "name": "enabled",
+                "displayName": "Enabled",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            }
+        ]
+    },
+    {
+        "displayName": "Key Authentication - Encrypted",
+        "name":"key-auth-enc",
+        "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_key-auth.png",
+        "parameters": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "default": "key-auth-enc",
+                "editable": false,
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "service",
+                "displayName": "Service",
+                "default": null,
+                "editable": true,
+                "type": "Services"
+            },
+            {
+                "name": "route",
+                "displayName": "Route",
+                "default": null,
+                "editable": true,
+                "type": "Routes"
+            },
+            {
+                "name": "enabled",
+                "displayName": "Enabled",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.key_names",
+                "displayName": "Key Names",
+                "default": ["apikey"],
+                "editable": true,
+                "type": "Combobox"
+            },
+            {
+                "name": "config.key_in_body",
+                "displayName": "Key in Body *",
+                "default": false,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {   
+                "name": "config.key_in_header",
+                "displayName": "Key in Header *",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.key_in_query",
+                "displayName": "Key in Query *",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.hide_credentials",
+                "displayName": "Hide Credentials *",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.anonymous",
+                "displayName": "Anonymous *",
+                "default": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.run_on_preflight",
+                "displayName": "Run on Preflight *",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            }
+        ]
+    },
+    {
+        "displayName": "LDAP Authentication",
+        "name": "ldap-auth",
+        "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_ldap-auth.png",
+        "parameters": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "default": "ldap-auth",
+                "editable": false,
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "service",
+                "displayName": "Service",
+                "default": null,
+                "editable": true,
+                "type": "Services"
+            },
+            {
+                "name": "route",
+                "displayName": "Route",
+                "default": null,
+                "editable": true,
+                "type": "Routes"
+            },
+            {
+                "name": "enabled",
+                "displayName": "Enabled",
+                "default": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.hide_credentials",
+                "displayName": "Hide Credentials",
+                "default": false,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.ldap_host",
+                "displayName": "LDAP Host",
+                "default": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.ldap_port",
+                "displayName": "LDAP Port",
+                "default": 389,
+                "editable": true,
+                "type": "Number"
+            },
+            {
+                "name": "config.start_tls",
+                "displayName": "Start TLS",
+                "default": false,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.ldaps",
+                "displayName": "LDAPS",
+                "default": false,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.base_dn",
+                "displayName": "BaseDN",
+                "default": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.verify_ldap_host",
+                "displayName": "Verify LDAP Host",
+                "default": false,
+                "editable": false,
+                "type": " Boolean"
+            },
+            {
+                "name": "config.attribute",
+                "displayName": "Attribute",
+                "default": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.cache_ttl",
+                "displayName": "Cache TTL",
+                "default": 60,
+                "editable": true,
+                "type": "Number"
+            },
+            {
+                "name": "config.keepalive",
+                "displayName": "Keepalive",
+                "default": 60000,
+                "editable": true,
+                "type": "Number"
+            },
+            {
+                "name": "config.anonymous",
+                "displayName": "Anonymous *",
+                "default": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.header_type",
+                "displayName": "Header Type",
+                "default": "ldap",
+                "editable": true,
+                "type": "String"
+            }
+        ]
+    },
+    {
+        "name": "hmac-auth",
+        "displayName":"HMAC Authentication",
+        "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_hmac-auth.png",
+        "parameters": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "default": "hmac-auth",
+                "editable": false,
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "service",
+                "displayName": "Service",
+                "default": null,
+                "editable": true,
+                "type": "Services"
+            },
+            {
+                "name": "route",
+                "displayName": "Route",
+                "default": null,
+                "editable": true,
+                "type": "Routes"
+            },
+            {
+                "name": "config.hide_credentials",
+                "displayName": "Hide Credentials",
+                "default": false,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.clock_skew",
+                "displayName": "Clock Skew",
+                "default": 300,
+                "editable": true,
+                "type": "Number"
+            },
+            {
+                "name": "config.anonymous",
+                "displayName": "Anonymous *",
+                "default": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.validate_request_body",
+                "displayName": "Validate Request Body",
+                "default": false,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.enforce_headers",
+                "displayName": "Enforce Headers",
+                "default": false,
+                "editable": true,
+                "items": ["POST","GET","PUT","HEAD","DELETE","CONNECT","OPTIONS","TRACE","PATCH"],
+                "type": "Array",
+                "multiple": true
+            },
+            {
+                "name": "config.algorithms",
+                "displayName": "Algorithms",
+                "default": false,
+                "editable": true,
+                "items": ["hmac-sha1","hmac-sha256","hmac-sha384","hmac-sha512"],
+                "type": "Array",
+                "multiple": true
+            }
+        ]
+    }
+]
