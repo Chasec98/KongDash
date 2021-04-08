@@ -6,6 +6,7 @@ import Routes from "../views/Routes";
 import Plugins from "../views/Plugins";
 import Upstreams from "../views/Upstreams";
 import Consumers from "../views/Consumers";
+import Login from "../views/Login";
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
     path: "/upstreams",
     name: "Upstreams",
     component: Upstreams
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login
   }
 ];
 

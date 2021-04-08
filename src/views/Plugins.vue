@@ -2,34 +2,46 @@
   <div>
     <Table
       title="Plugins"
-      :data="routes"
+      :data="plugins"
       :headers="headers"
+      @add="openModal"
       @delete="deletePlugin"
     />
+    <v-dialog width="500" v-model="pluginsModalOpen">
+          <Plugins @close="pluginsModalOpen = false"></Plugins>
+    </v-dialog>
   </div>
 </template>
 <script>
-import Table from "../components/Table";
+import Plugins from '../components/plugins/Plugins'
+import Table from '../components/Table'
 import { mapState, mapActions } from "vuex";
 export default {
-  data: () => ({
-    headers: [
-      { text: "Name", value: "name" },
-      { text: "Consumer", value: "consumer" },
-      { text: "Service", value: "service" },
-      { text: "Route", value: "route" },
-      { text: "ID", value: "id" }
-    ]
-  }),
   components: {
+    Plugins,
     Table
   },
   created() {
     this.$store.dispatch("plugins/getPlugins");
   },
   computed: mapState({
-    routes: state => state.plugins.data
+    plugins: state => state.plugins.data
   }),
-  methods: mapActions("plugins", ["deletePlugin"])
+  data: () => ({
+    pluginsModalOpen: false,
+    headers: [
+      { text: "Name", value: "name" },
+      { text: "Consumer", value: "consumer" },
+      { text: "Service", value: "service" },
+      { text: "Route", value: "route" },
+      { text: "ID", value: "id" }
+    ],
+  }),
+  methods: {
+    openModal() {
+      this.pluginsModalOpen = true;
+    },
+    ...mapActions("plugins", ["deletePlugin"])
+  }
 };
 </script>

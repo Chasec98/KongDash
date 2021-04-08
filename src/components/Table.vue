@@ -3,7 +3,7 @@
     <v-card-title
       >{{ title }}
       <v-spacer></v-spacer>
-      <v-btn @click="addClicked" color="primary">New</v-btn>
+      <v-btn @click="addClicked" color="secondary">New</v-btn>
     </v-card-title>
     <v-card-subtitle></v-card-subtitle>
     <v-data-table
@@ -13,17 +13,23 @@
       item-key="id"
       class="elevation-1"
     >
+      <template v-slot:[`item.service`]="{ item }">
+        {{safeNull(item.service)}}
+      </template>
+      <template v-slot:[`item.route`]="{ item }">
+        {{safeNull(item.route)}}
+      </template>
       <template v-slot:[`item.buttons`]="{ item }">
-        <v-btn @click="editClicked(item)" icon color="primary">
+        <v-btn @click="editClicked(item)" icon color="secondary">
           <v-icon>mdi-pencil</v-icon>
         </v-btn>
-        <v-btn @click="deleteClicked(item.id)" icon color="primary">
+        <v-btn @click="deleteClicked(item.id)" icon color="secondary">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </template>
       <template v-slot:[`item.id`]="{ item }">
         {{ item.id }}
-        <v-btn icon color="primary">
+        <v-btn icon color="secondary">
           <v-icon>mdi-clipboard-text</v-icon>
         </v-btn>
       </template>
@@ -50,6 +56,13 @@ export default {
     },
     addClicked() {
       this.$emit("add");
+    },
+    safeNull(e) {
+      if (e) {
+        return e.id
+      } else {
+        return ""
+      }
     }
   },
   computed: {
