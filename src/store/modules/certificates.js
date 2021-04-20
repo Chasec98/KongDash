@@ -20,7 +20,7 @@ const actions = {
       );
     });
   },
-  editCertification({ dispatch }, certificate) {
+  editCertificate({ dispatch }, certificate) {
     Vue.axios.put("/certificates/" + certificate.id, certificate).then(() => {
       dispatch("getCertificates");
     }).catch(err => {
@@ -31,8 +31,8 @@ const actions = {
       );
     });
   },
-  createCertification({ dispatch }, certificate) {
-    Vue.axios.put("/certificates", certificate).then(() => {
+  createCertificate({ dispatch }, certificate) {
+    Vue.axios.post("/certificates", certificate).then(() => {
       dispatch("getCertificates");
     }).catch(err => {
       dispatch(
