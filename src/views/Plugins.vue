@@ -5,10 +5,11 @@
       :data="plugins"
       :headers="headers"
       @add="openModal"
+      @edit="editPlugin"
       @delete="deletePlugin"
     />
     <v-dialog width="500" v-model="pluginsModalOpen">
-          <Plugins @close="pluginsModalOpen = false"></Plugins>
+          <Plugins @close="closeModal" :plugin="plugin"></Plugins>
     </v-dialog>
   </div>
 </template>
@@ -36,9 +37,18 @@ export default {
       { text: "Route", value: "route" },
       { text: "ID", value: "id" }
     ],
+    plugin: {}
   }),
   methods: {
+    closeModal(){
+      this.plugin = {}
+      this.pluginsModalOpen = false;
+    },
     openModal() {
+      this.pluginsModalOpen = true;
+    },
+    editPlugin(plugin){
+      this.plugin = plugin;
       this.pluginsModalOpen = true;
     },
     ...mapActions("plugins", ["deletePlugin"])

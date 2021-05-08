@@ -7,7 +7,7 @@
             {
                 "name": "name",
                 "displayName": "Name",
-                "default": "session",
+                "value": "session",
                 "editable": false,
                 "type": "String",
                 "required": true
@@ -15,56 +15,56 @@
             {
                 "name": "service",
                 "displayName": "Service",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Services"
             },
             {
                 "name": "route",
                 "displayName": "Route",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Routes"
             },
             {
                 "name": "enabled",
                 "displayName": "Enabled",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.secret",
                 "displayName": "Secret",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
             {
                 "name": "config.cookie_name",
                 "displayName": "Cookie Name",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
             {
                 "name": "config.cookie_lifetime",
                 "displayName": "Cookie Lifetime",
-                "default": 3600,
+                "value": 3600,
                 "editable": true,
                 "type": "Number"
             },
             {
                 "name": "config.cookie_idletime",
                 "displayName": "Cookie Idletime",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Number"
             },
             {
                 "name": "config.cookie_renew",
                 "displayName": "Cookie Renew",
-                "default": 600,
+                "value": 600,
                 "editable": true,
                 "type": "Number"
             }
@@ -78,7 +78,7 @@
             {
                 "name": "name",
                 "displayName": "Name",
-                "default": "key-auth",
+                "value": "key-auth",
                 "editable": false,
                 "type": "String",
                 "required": true
@@ -86,70 +86,70 @@
             {
                 "name": "service",
                 "displayName": "Service",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Services"
             },
             {
                 "name": "route",
                 "displayName": "Route",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Routes"
             },
             {
                 "name": "enabled",
                 "displayName": "Enabled",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.key_names",
                 "displayName": "Key Names",
-                "default": ["apikey"],
+                "value": ["apikey"],
                 "editable": true,
                 "type": "Combobox"
             },
             {
                 "name": "config.key_in_body",
                 "displayName": "Key in Body *",
-                "default": false,
+                "value": false,
                 "editable": true,
                 "type": "Boolean"
             },
             {   
                 "name": "config.key_in_header",
                 "displayName": "Key in Header *",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.key_in_query",
                 "displayName": "Key in Query *",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.hide_credentials",
                 "displayName": "Hide Credentials *",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.anonymous",
                 "displayName": "Anonymous *",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
             {
                 "name": "config.run_on_preflight",
                 "displayName": "Run on Preflight *",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             }
@@ -163,7 +163,7 @@
             {
                 "name": "name",
                 "displayName": "Name",
-                "default": "basic-auth",
+                "value": "basic-auth",
                 "editable": false,
                 "type": "String",
                 "required": true
@@ -171,35 +171,35 @@
             {
                 "name": "service",
                 "displayName": "Service",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Services"
             },
             {
                 "name": "route",
                 "displayName": "Route",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Routes"
             },
             {
                 "name": "enabled",
                 "displayName": "Enabled",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.hide_credentials",
                 "displayName": "Hide Credentials *",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.anonymous",
                 "displayName": "Anonymous *",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "String"
             }
@@ -213,7 +213,7 @@
             {
                 "name": "name",
                 "displayName": "Name",
-                "default": "prometheus",
+                "value": "prometheus",
                 "editable": false,
                 "type": "String",
                 "required": true
@@ -221,14 +221,14 @@
             {
                 "name": "service",
                 "displayName": "Service",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Services"
             },
             {
                 "name": "enabled",
                 "displayName": "Enabled",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             }
@@ -242,7 +242,7 @@
             {
                 "name": "name",
                 "displayName": "Name",
-                "default": "key-auth-enc",
+                "value": "key-auth-enc",
                 "editable": false,
                 "type": "String",
                 "required": true
@@ -250,70 +250,70 @@
             {
                 "name": "service",
                 "displayName": "Service",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Services"
             },
             {
                 "name": "route",
                 "displayName": "Route",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Routes"
             },
             {
                 "name": "enabled",
                 "displayName": "Enabled",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.key_names",
                 "displayName": "Key Names",
-                "default": ["apikey"],
+                "value": ["apikey"],
                 "editable": true,
                 "type": "Combobox"
             },
             {
                 "name": "config.key_in_body",
                 "displayName": "Key in Body *",
-                "default": false,
+                "value": false,
                 "editable": true,
                 "type": "Boolean"
             },
             {   
                 "name": "config.key_in_header",
                 "displayName": "Key in Header *",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.key_in_query",
                 "displayName": "Key in Query *",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.hide_credentials",
                 "displayName": "Hide Credentials *",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.anonymous",
                 "displayName": "Anonymous *",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
             {
                 "name": "config.run_on_preflight",
                 "displayName": "Run on Preflight *",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             }
@@ -327,7 +327,7 @@
             {
                 "name": "name",
                 "displayName": "Name",
-                "default": "ldap-auth",
+                "value": "ldap-auth",
                 "editable": false,
                 "type": "String",
                 "required": true
@@ -335,105 +335,105 @@
             {
                 "name": "service",
                 "displayName": "Service",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Services"
             },
             {
                 "name": "route",
                 "displayName": "Route",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Routes"
             },
             {
                 "name": "enabled",
                 "displayName": "Enabled",
-                "default": true,
+                "value": true,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.hide_credentials",
                 "displayName": "Hide Credentials",
-                "default": false,
+                "value": false,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.ldap_host",
                 "displayName": "LDAP Host",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
             {
                 "name": "config.ldap_port",
                 "displayName": "LDAP Port",
-                "default": 389,
+                "value": 389,
                 "editable": true,
                 "type": "Number"
             },
             {
                 "name": "config.start_tls",
                 "displayName": "Start TLS",
-                "default": false,
+                "value": false,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.ldaps",
                 "displayName": "LDAPS",
-                "default": false,
+                "value": false,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.base_dn",
                 "displayName": "BaseDN",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
             {
                 "name": "config.verify_ldap_host",
                 "displayName": "Verify LDAP Host",
-                "default": false,
+                "value": false,
                 "editable": false,
                 "type": " Boolean"
             },
             {
                 "name": "config.attribute",
                 "displayName": "Attribute",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
             {
                 "name": "config.cache_ttl",
                 "displayName": "Cache TTL",
-                "default": 60,
+                "value": 60,
                 "editable": true,
                 "type": "Number"
             },
             {
                 "name": "config.keepalive",
                 "displayName": "Keepalive",
-                "default": 60000,
+                "value": 60000,
                 "editable": true,
                 "type": "Number"
             },
             {
                 "name": "config.anonymous",
                 "displayName": "Anonymous *",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
             {
                 "name": "config.header_type",
                 "displayName": "Header Type",
-                "default": "ldap",
+                "value": "ldap",
                 "editable": true,
                 "type": "String"
             }
@@ -447,7 +447,7 @@
             {
                 "name": "name",
                 "displayName": "Name",
-                "default": "hmac-auth",
+                "value": "hmac-auth",
                 "editable": false,
                 "type": "String",
                 "required": true
@@ -455,49 +455,49 @@
             {
                 "name": "service",
                 "displayName": "Service",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Services"
             },
             {
                 "name": "route",
                 "displayName": "Route",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "Routes"
             },
             {
                 "name": "config.hide_credentials",
                 "displayName": "Hide Credentials",
-                "default": false,
+                "value": false,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.clock_skew",
                 "displayName": "Clock Skew",
-                "default": 300,
+                "value": 300,
                 "editable": true,
                 "type": "Number"
             },
             {
                 "name": "config.anonymous",
                 "displayName": "Anonymous *",
-                "default": null,
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
             {
                 "name": "config.validate_request_body",
                 "displayName": "Validate Request Body",
-                "default": false,
+                "value": false,
                 "editable": true,
                 "type": "Boolean"
             },
             {
                 "name": "config.enforce_headers",
                 "displayName": "Enforce Headers",
-                "default": false,
+                "value": false,
                 "editable": true,
                 "items": ["POST","GET","PUT","HEAD","DELETE","CONNECT","OPTIONS","TRACE","PATCH"],
                 "type": "Array",
@@ -506,7 +506,7 @@
             {
                 "name": "config.algorithms",
                 "displayName": "Algorithms",
-                "default": false,
+                "value": false,
                 "editable": true,
                 "items": ["hmac-sha1","hmac-sha256","hmac-sha384","hmac-sha512"],
                 "type": "Array",

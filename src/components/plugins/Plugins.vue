@@ -1,11 +1,11 @@
 <template>
     <div>
-    <v-card v-show="!showPlugin" class="modal" id="selectPlugin">
+    <v-card v-show="!selectedPlugin" class="modal" id="selectPlugin">
         <v-card-title>Select Plugin</v-card-title>
         <v-container>
-            <v-data-table hide-default-footer :headers="selectHeaders" :items="plugins">
+            <v-data-table hide-default-footer :headers="selectHeaders" :items="pluginList">
                 <template v-slot:[`item.buttons`]="{ item }">
-                    <v-btn @click="selectPlugin(item)" text color="secondary">
+                    <v-btn @click="getPlugin(item.name)" text color="secondary">
                         Select
                     </v-btn>
                 </template>
@@ -20,19 +20,19 @@
         </v-btn>
         </v-card-actions>
         </v-card>
-        <v-card v-show="showPlugin">
-            <v-card-title>{{ pluginName }}</v-card-title>
+        <v-card v-if="selectedPlugin">
+            <v-card-title>{{ selectedPlugin.displayName }}</v-card-title>
             <v-container>
                 <p>* = optional</p>
-                <v-row v-for="param in pluginParams" v-bind:key="param.name">
+                <v-row v-for="param in selectedPlugin.parameters" v-bind:key="param.name">
                     <v-col v-if="param.editable === true">
-                        <v-text-field :label="param.displayName" :v-model="param.default || param.value" v-if="param.type === `String`" v-model="pluginModel[param.name]"></v-text-field>
-                        <v-text-field :label="param.displayName" :v-model="param.default" v-if="param.type === `Number`" type="number" v-model="pluginModel[param.name]"></v-text-field>
-                        <v-switch :label="param.displayName" v-if="param.type === 'Boolean'" v-model="pluginModel[param.name]"></v-switch>
-                        <v-select label="Route" v-if="param.type === 'Routes'" v-model="pluginModel[param.name]" :items="routes" :item-text="resourceName" return-object></v-select>
-                        <v-select label="Service" v-if="param.type === 'Services'" v-model="pluginModel[param.name]" :items="services" :item-text="resourceName" return-object></v-select>
-                        <v-select :label="param.displayName" :items="param.items" v-model="pluginModel[param.name]" v-if="param.type ==='Array'" :multiple="param.multiple || false"></v-select>
-                        <v-combobox :label="param.displayName" :items="param.items" v-model="pluginModel[param.name]" v-if="param.type === 'Combobox'" small-chips multiple></v-combobox>
+                        <v-text-field :label="param.displayName" :v-model="param.default || param.value" v-if="param.type === `String`" v-model="param.value"></v-text-field>
+                        <v-text-field :label="param.displayName" v-if="param.type === `Number`" type="number" v-model="param.value"></v-text-field>
+                        <v-switch :label="param.displayName" v-if="param.type === 'Boolean'" v-model="param.value"></v-switch>
+                        <v-select label="Route" v-if="param.type === 'Routes'" v-model="param.value" :items="routes" :item-text="resourceName" return-object></v-select>
+                        <v-select label="Service" v-if="param.type === 'Services'" v-model="param.value" :items="services" :item-text="resourceName" return-object></v-select>
+                        <v-select :label="param.displayName" :items="param.items" v-model="param.value" v-if="param.type ==='Array'" :multiple="param.multiple || false"></v-select>
+                        <v-combobox :label="param.displayName" :items="param.items" v-model="param.value" v-if="param.type === 'Combobox'" small-chips multiple></v-combobox>
                     </v-col>
                 </v-row>
             </v-container>
@@ -63,9 +63,8 @@ export default {
             { text: 'Name', value: 'displayName' },
             { text: '', value: 'buttons' }
         ],
-        showPlugin: false,
         selectedPlugin: undefined,
-        pluginModel: {}
+        pluginModel: undefined,
     }),
     methods: {
         ...mapActions("plugins", ["updatePlugin", "createPlugin"]),
@@ -73,63 +72,65 @@ export default {
             this.$emit("close");
         },
         submit() {
-            for (const [key, value] of Object.entries(this.pluginModel)) {
-                if (key.includes(".")){
-                    const strs = key.split(".");
-                    if (!this.pluginModel[strs[0]]){
-                        this.pluginModel[strs[0]] = {};
-                    }
-                    if (strs[1] !== null) {
-                        this.pluginModel[strs[0]][strs[1]] = value;
-                        delete this.pluginModel[key];   
-                    }
-                }
-                if (value === null) {
-                    delete this.pluginModel[key];
-                }
-            }
-            this.createPlugin(this.pluginModel);
-            this.showPlugin = false;
+            this.createPlugin(this.apiPlugin);
+            this.selectedPlugin = undefined;
             this.close();
         },
         closePlugin() {
-            this.showPlugin = false;
-        },
-        selectPlugin(plugin) {
-            this.showPlugin = true
-            this.selectedPlugin = plugin;
-            this.pluginModel = {};
-            plugin.parameters.forEach(e => {
-                this.pluginModel[e.name] = e.default
-            })
+            this.selectedPlugin = undefined;
         },
         resourceName(r) {
             return `${r.name} - ${r.id}`
+        },
+        getPlugin(name) {
+            this.selectedPlugin = this.plugins.filter(e => e.name === name)[0]
+        },
+        convertPlugin(plugin) {
+            for (let [key, value] of Object.entries(plugin)) {
+                console.log(`${key}: ${value}`);
+            }
         }
     },
     computed: {
         plugins() {
             return plugins
         },
-        pluginName() {
-            if (this.selectedPlugin) {
-                return this.selectedPlugin.displayName
-            } else {
-                return ""
-            }
+        pluginList(){
+            return this.plugins.map(plugin => {
+                return {
+                    displayName: plugin.displayName,
+                    name: plugin.name,
+                    image: plugin.image,
+                }
+            })
         },
-        pluginParams() {
+        apiPlugin(){
             if (this.selectedPlugin) {
-                return this.selectedPlugin.parameters
+                let plugin = {}
+                this.selectedPlugin.parameters.forEach(p => {
+                    if (p.type === "Number") {
+                        p.value = Number(p.value)
+                    }
+                    if (p.name.includes(".")) {
+                        let s = p.name.split(".")
+                        if (!plugin[s[0]]){
+                            plugin[s[0]] = {};   
+                        }
+                        plugin[s[0]][s[1]] = p.value;
+                    } else {
+                        plugin[p.name] = p.value
+                    }
+                })
+                return plugin
             } else {
-                return []
+                return {}
             }
         },
         ...mapState({
             routes: state => state.routes.data,
             services: state => state.services.data
         }),
-    }
+    },
 }
 </script>
 <style scoped>
