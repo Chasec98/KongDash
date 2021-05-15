@@ -18,6 +18,16 @@
           ></v-textarea>
         </v-col>
       </v-row>
+      <v-row>
+        <v-col class="pt-0 pb-0">
+          <v-combobox
+            label="SNIs"
+            small-chips
+            multiple
+            v-model="certificate.snis"
+          ></v-combobox>
+        </v-col>
+      </v-row>
     </v-container>
     <v-card-actions>
       <v-btn text @click="cancelClicked">
@@ -43,6 +53,7 @@ export default {
                 key: undefined,
                 cert_alt: undefined,
                 key_alt: undefined,
+                snis: [],
                 tags: []
             })
         }

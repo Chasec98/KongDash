@@ -39,7 +39,8 @@ export default {
     },
     data: () => ({
         headers: [
-            { text: "ID", value: "id" }
+            { text: "ID", value: "id" },
+            { text: "SNIs", value: "snis" },
         ],
         certificateModalOpen: false,
         selectedCertificate: undefined,
