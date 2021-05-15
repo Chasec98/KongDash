@@ -52,6 +52,7 @@
 <script>
 const plugins = require('../../configs/plugins.json');
 import { mapState, mapActions } from 'vuex';
+const dot = require('dot-object');
 export default {
     mounted() {
         this.$store.dispatch("services/getServices");
@@ -111,15 +112,7 @@ export default {
                     if (p.type === "Number") {
                         p.value = Number(p.value)
                     }
-                    if (p.name.includes(".")) {
-                        let s = p.name.split(".")
-                        if (!plugin[s[0]]){
-                            plugin[s[0]] = {};   
-                        }
-                        plugin[s[0]][s[1]] = p.value;
-                    } else {
-                        plugin[p.name] = p.value
-                    }
+                    dot.str(p.name, p.value, plugin)
                 })
                 return plugin
             } else {
