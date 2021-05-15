@@ -8,13 +8,13 @@
       @delete="deletePlugin"
     />
     <v-dialog width="500" v-model="pluginsModalOpen">
-          <Plugins @close="pluginsModalOpen = false"></Plugins>
+      <Plugins @close="pluginsModalOpen = false"></Plugins>
     </v-dialog>
   </div>
 </template>
 <script>
-import Plugins from '../components/plugins/Plugins'
-import Table from '../components/Table'
+import Plugins from "../components/plugins/Plugins";
+import Table from "../components/Table";
 import { mapState, mapActions } from "vuex";
 export default {
   components: {
@@ -35,7 +35,7 @@ export default {
       { text: "Service", value: "service" },
       { text: "Route", value: "route" },
       { text: "ID", value: "id" }
-    ],
+    ]
   }),
   methods: {
     openModal() {

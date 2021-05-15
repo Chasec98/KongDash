@@ -61,7 +61,7 @@ export default {
   },
   data: () => ({
     algorithms: constants.algorithms,
-    hashOptions: constants.hashOptions,
+    hashOptions: constants.hashOptions
   }),
   methods: {
     ...mapActions("upstreams", ["updateUpstream", "createUpstream"]),

@@ -12,10 +12,7 @@
       </v-row>
       <v-row>
         <v-col class="pt-0 pb-0">
-          <v-textarea
-            v-model="certificate.key"
-            label="Key"
-          ></v-textarea>
+          <v-textarea v-model="certificate.key" label="Key"></v-textarea>
         </v-col>
       </v-row>
       <v-row>
@@ -42,47 +39,47 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
-    props: {
-        certificate: {
-            type: Object,
-            default: () => ({
-                id: undefined,
-                cert: undefined,
-                key: undefined,
-                cert_alt: undefined,
-                key_alt: undefined,
-                snis: [],
-                tags: []
-            })
-        }
+  props: {
+    certificate: {
+      type: Object,
+      default: () => ({
+        id: undefined,
+        cert: undefined,
+        key: undefined,
+        cert_alt: undefined,
+        key_alt: undefined,
+        snis: [],
+        tags: []
+      })
+    }
+  },
+  methods: {
+    ...mapActions("certificates", ["updateCertificate", "createCertificate"]),
+    submitClicked() {
+      if (this.certificate.id) {
+        this.updateCertificate(this.certificate);
+      } else {
+        console.log("creating cert");
+        this.createCertificate(this.certificate);
+      }
+      this.$emit("cancel");
     },
-    methods: {
-        ...mapActions("certificates", ["updateCertificate", "createCertificate"]),
-        submitClicked() {
-            if (this.certificate.id) {
-                this.updateCertificate(this.certificate);
-            } else {
-                console.log("creating cert")
-                this.createCertificate(this.certificate);
-            }
-            this.$emit("cancel");
-        },
-        cancelClicked() {
-          this.$emit("cancel");
-        }
-    },
-    computed: {
-        title() {
-        if (this.certificate.id) {
-            return "Edit Certificate";
-        } else {
-            return "New Certificate";
-        }
-        }
+    cancelClicked() {
+      this.$emit("cancel");
+    }
+  },
+  computed: {
+    title() {
+      if (this.certificate.id) {
+        return "Edit Certificate";
+      } else {
+        return "New Certificate";
+      }
+    }
   }
-}
+};
 </script>
 
 <style scoped>
