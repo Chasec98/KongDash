@@ -10,7 +10,7 @@
     <v-snackbar multi-line v-model="snackbarOpen"
       >{{ snackbar.message }}
       <template v-slot:action="{ attrs }">
-        <v-btn color="primary" text v-bind="attrs" @click="close">
+        <v-btn color="secondary" text v-bind="attrs" @click="close">
           Close
         </v-btn>
       </template>
