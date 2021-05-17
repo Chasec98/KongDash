@@ -440,6 +440,91 @@
         ]
     },
     {
+        "name": "jwt",
+        "displayName":"JWT",
+        "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_jwt.png",
+        "parameters": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "value": "hmac-auth",
+                "editable": false,
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "service",
+                "displayName": "Service",
+                "value": null,
+                "editable": true,
+                "type": "Services"
+            },
+            {
+                "name": "route",
+                "displayName": "Route",
+                "value": null,
+                "editable": true,
+                "type": "Routes"
+            },
+            {
+                "name": "config.secret_is_base64",
+                "displayName": "Secret is Base64",
+                "value": false,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.run_on_preflight",
+                "displayName": "Run on Preflight",
+                "value": true,
+                "editable": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.maximum_expiration",
+                "displayName": "Maximum Expiration",
+                "value": 0,
+                "editable": true,
+                "type": "Number"
+            },
+            {
+                "name": "config.anonymous",
+                "displayName": "Anonymous",
+                "value": "",
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.key_claim_name",
+                "displayName": "Key Claim Name",
+                "value": "",
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.header_names",
+                "displayName": "Header Names",
+                "value": [],
+                "editable": true,
+                "type": "Combobox"
+            },
+            {
+                "name": "config.cookie_names",
+                "displayName": "Cookie Names",
+                "value": [],
+                "editable": true,
+                "type": "Combobox"
+            },
+            {
+                "name": "config.uri_param_names",
+                "displayName": "URI Paramater Names",
+                "value": [],
+                "editable": true,
+                "type": "Combobox"
+            }
+        ]
+    },
+    {
         "name": "hmac-auth",
         "displayName":"HMAC Authentication",
         "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_hmac-auth.png",
@@ -497,7 +582,7 @@
             {
                 "name": "config.enforce_headers",
                 "displayName": "Enforce Headers",
-                "value": false,
+                "value": [],
                 "editable": true,
                 "items": ["POST","GET","PUT","HEAD","DELETE","CONNECT","OPTIONS","TRACE","PATCH"],
                 "type": "Array",
@@ -506,7 +591,7 @@
             {
                 "name": "config.algorithms",
                 "displayName": "Algorithms",
-                "value": false,
+                "value": [],
                 "editable": true,
                 "items": ["hmac-sha1","hmac-sha256","hmac-sha384","hmac-sha512"],
                 "type": "Array",
