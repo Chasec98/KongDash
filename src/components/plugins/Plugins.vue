@@ -54,33 +54,19 @@ const plugins = require('../../configs/plugins.json');
 import { mapState, mapActions } from 'vuex';
 const dot = require('dot-object');
 export default {
-  mounted() {
-    this.$store.dispatch("services/getServices");
-    this.$store.dispatch("routes/getRoutes");
-  },
-  data: () => ({
-    selectHeaders: [
-      { text: "", value: "image" },
-      { text: "Name", value: "displayName" },
-      { text: "", value: "buttons" }
-    ],
-    showPlugin: false,
-    selectedPlugin: undefined,
-    pluginModel: {}
-  }),
-  methods: {
-    ...mapActions("plugins", ["updatePlugin", "createPlugin"]),
-    close() {
-      this.$emit("close");
+    mounted() {
+        this.$store.dispatch("services/getServices");
+        this.$store.dispatch("routes/getRoutes");
     },
     data: () => ({
         selectHeaders: [
-            { text: '', value: 'image' },
-            { text: 'Name', value: 'displayName' },
-            { text: '', value: 'buttons' }
+            { text: "", value: "image" },
+            { text: "Name", value: "displayName" },
+            { text: "", value: "buttons" }
         ],
+        showPlugin: false,
         selectedPlugin: undefined,
-        pluginModel: undefined,
+        pluginModel: {}
     }),
     methods: {
         ...mapActions("plugins", ["updatePlugin", "createPlugin"]),
@@ -106,22 +92,7 @@ export default {
                 console.log(`${key}: ${value}`);
             }
         }
-      }
-      this.createPlugin(this.pluginModel);
-      this.showPlugin = false;
-      this.close();
-    },
-    closePlugin() {
-      this.showPlugin = false;
-    },
-    selectPlugin(plugin) {
-      this.showPlugin = true;
-      this.selectedPlugin = plugin;
-      this.pluginModel = {};
-      plugin.parameters.forEach(e => {
-        this.pluginModel[e.name] = e.default;
-      });
-    },
+      },
     computed: {
         plugins() {
             return plugins
