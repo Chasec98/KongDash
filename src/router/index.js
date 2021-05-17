@@ -7,6 +7,7 @@ import Plugins from "../views/Plugins";
 import Upstreams from "../views/Upstreams";
 import Consumers from "../views/Consumers";
 import Login from "../views/Login";
+import Certificates from "../views/Certificates";
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login
+  },
+  {
+    path: "/certificates",
+    name: "Certificates",
+    component: Certificates
   }
 ];
 

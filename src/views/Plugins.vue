@@ -14,8 +14,8 @@
   </div>
 </template>
 <script>
-import Plugins from '../components/plugins/Plugins'
-import Table from '../components/Table'
+import Plugins from "../components/plugins/Plugins";
+import Table from "../components/Table";
 import { mapState, mapActions } from "vuex";
 export default {
   components: {

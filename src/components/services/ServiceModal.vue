@@ -134,7 +134,7 @@ export default {
     }
   },
   data: () => ({
-    protocols: constants.protocols,
+    protocols: constants.protocols
   }),
   methods: {
     ...mapActions("services", ["updateService", "createService"]),

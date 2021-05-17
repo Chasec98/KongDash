@@ -155,7 +155,7 @@ export default {
   data: () => ({
     methods: constants.methods,
     protocols: constants.protocols,
-    pathHandlers: constants.pathHandlers,
+    pathHandlers: constants.pathHandlers
   }),
   methods: {
     ...mapActions("routes", ["updateRoute", "createRoute"]),

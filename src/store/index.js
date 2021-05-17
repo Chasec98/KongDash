@@ -8,6 +8,7 @@ import upstreams from "./modules/upstreams";
 import certificates from "./modules/certificates";
 import targets from "./modules/targets";
 import consumers from "./modules/consumers";
+import snis from "./modules/snis";
 
 Vue.use(Vuex);
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     certificates,
     targets,
     consumers,
-    snackbar
+    snackbar,
+    snis
   }
 });

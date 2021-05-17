@@ -1,6 +1,13 @@
 <template>
   <v-app>
-    <v-app-bar color="primary" dense flat dark app v-if="$vuetify.breakpoint.mdAndDown">
+    <v-app-bar
+      color="primary"
+      dense
+      flat
+      dark
+      app
+      v-if="$vuetify.breakpoint.mdAndDown"
+    >
       <v-app-bar-nav-icon @click="toggleTopBar"></v-app-bar-nav-icon>
     </v-app-bar>
     <Navigation @transitioned="toggleNav" :open="leftBarOpen" />
@@ -25,7 +32,7 @@ import { mapState, mapActions } from "vuex";
 export default {
   name: "App",
   data: () => ({
-    leftBarOpen: undefined,
+    leftBarOpen: undefined
   }),
   created() {
     if (this.$vuetify.breakpoint.mdAndDown) {
@@ -46,15 +53,17 @@ export default {
       this.leftBarOpen = value;
     }
   },
-  computed: { 
+  computed: {
     ...mapState({
-      snackbar: state => state.snackbar,
+      snackbar: state => state.snackbar
     }),
     snackbarOpen: {
-      get() { return this.snackbar.open },
+      get() {
+        return this.snackbar.open;
+      },
       set(value) {
         if (!value) {
-          this.close()
+          this.close();
         }
       }
     }
