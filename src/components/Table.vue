@@ -14,10 +14,10 @@
       class="elevation-1"
     >
       <template v-slot:[`item.service`]="{ item }">
-        {{safeNull(item.service)}}
+        {{ safeNull(item.service) }}
       </template>
       <template v-slot:[`item.route`]="{ item }">
-        {{safeNull(item.route)}}
+        {{ safeNull(item.route) }}
       </template>
       <template v-slot:[`item.buttons`]="{ item }">
         <v-btn @click="editClicked(item)" icon color="secondary">
@@ -59,9 +59,9 @@ export default {
     },
     safeNull(e) {
       if (e) {
-        return e.id
+        return e.id;
       } else {
-        return ""
+        return "";
       }
     }
   },

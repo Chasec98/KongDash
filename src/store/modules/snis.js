@@ -8,59 +8,59 @@ const state = () => ({
 const getters = {};
 
 const actions = {
-  getPlugins({ commit, dispatch }) {
+  getSNIs({ commit, dispatch }) {
     Vue.axios
-      .get("/plugins")
+      .get("/snis")
       .then(resp => {
-        commit("setPlugins", resp.data.data);
+        commit("setSNIs", resp.data.data);
         commit("setNext", resp.data.next);
       })
       .catch(err => {
         dispatch(
           "snackbar/addMessage",
-          "Error getting plugins: " + err.response.data.message,
+          "Error getting snis: " + err.response.data.message,
           { root: true }
         );
       });
   },
-  deletePlugin({ dispatch }, pluginId) {
+  deleteSNI({ dispatch }, sniId) {
     Vue.axios
-      .delete("/plugins/" + pluginId)
+      .delete("/snis/" + sniId)
       .then(() => {
-        dispatch("getPlugins");
+        dispatch("getSNIs");
       })
       .catch(err => {
         dispatch(
           "snackbar/addMessage",
-          "Error deleting plugin: " + err.response.data.message,
+          "Error deleting sni: " + err.response.data.message,
           { root: true }
         );
       });
   },
-  createPlugin({ dispatch }, plugin) {
+  updateSNI({ dispatch }, sni) {
     Vue.axios
-      .post("/plugins", plugin)
+      .put("/snis/" + sni.id, sni)
       .then(() => {
-        dispatch("getPlugins");
+        dispatch("getSNIs");
       })
       .catch(err => {
         dispatch(
           "snackbar/addMessage",
-          "Error creating plugin: " + err.response.data.message,
+          "Error updating sni: " + err.response.data.message,
           { root: true }
         );
       });
   },
-  editPlugin({ dispatch }, plugin) {
+  createSNI({ dispatch }, sni) {
     Vue.axios
-      .put("/plugins/" + plugin.id, plugin)
+      .post("/snis", sni)
       .then(() => {
-        dispatch("getPlugins");
+        dispatch("getSNIs");
       })
       .catch(err => {
         dispatch(
           "snackbar/addMessage",
-          "Error editing plugin: " + err.response.data.message,
+          "Error creating sni: " + err.response.data.message,
           { root: true }
         );
       });
@@ -68,8 +68,8 @@ const actions = {
 };
 
 const mutations = {
-  setPlugins(state, plugins) {
-    state.data = plugins;
+  setSNIs(state, snis) {
+    state.data = snis;
   },
   setNext(state, next) {
     state.next = next;

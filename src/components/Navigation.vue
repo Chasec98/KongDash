@@ -6,7 +6,9 @@
           <v-list-item-title class="title white--text">
             Chase Carter
           </v-list-item-title>
-          <v-list-item-subtitle class="white--text">ccarter98@gmail.com</v-list-item-subtitle>
+          <v-list-item-subtitle class="white--text"
+            >ccarter98@gmail.com</v-list-item-subtitle
+          >
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -18,7 +20,9 @@
         <v-list-item-icon>
           <v-icon class="white--text">{{ item.icon }}</v-icon>
         </v-list-item-icon>
-        <v-list-item-title class="white--text">{{ item.title }}</v-list-item-title>
+        <v-list-item-title class="white--text">{{
+          item.title
+        }}</v-list-item-title>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
@@ -30,7 +34,7 @@ export default {
   },
   watch: {
     open: function(value) {
-      this.$emit('transitioned', value)
+      this.$emit("transitioned", value);
     }
   },
   data: () => ({
