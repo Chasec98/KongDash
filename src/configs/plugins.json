@@ -440,6 +440,49 @@
         ]
     },
     {
+        "name": "file-log",
+        "displayName":"File Log",
+        "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_file-log.png",
+        "parameters": [
+            {
+                "name": "name",
+                "displayName": "Name",
+                "value": "file-log",
+                "editable": false,
+                "type": "String",
+                "required": true
+            },
+            {
+                "name": "service",
+                "displayName": "Service",
+                "value": null,
+                "editable": true,
+                "type": "Services"
+            },
+            {
+                "name": "route",
+                "displayName": "Route",
+                "value": null,
+                "editable": true,
+                "type": "Routes"
+            },
+            {
+                "name": "config.path",
+                "displayName": "Path",
+                "value": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.reopen",
+                "displayName": "Re-Open",
+                "value": false,
+                "editable": true,
+                "type": "Boolean"
+            }
+        ]
+    },
+    {
         "name": "jwt",
         "displayName":"JWT",
         "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_jwt.png",
@@ -447,7 +490,7 @@
             {
                 "name": "name",
                 "displayName": "Name",
-                "value": "hmac-auth",
+                "value": "jwt",
                 "editable": false,
                 "type": "String",
                 "required": true
@@ -490,14 +533,14 @@
             {
                 "name": "config.anonymous",
                 "displayName": "Anonymous",
-                "value": "",
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
             {
                 "name": "config.key_claim_name",
                 "displayName": "Key Claim Name",
-                "value": "",
+                "value": null,
                 "editable": true,
                 "type": "String"
             },
