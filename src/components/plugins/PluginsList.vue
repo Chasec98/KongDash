@@ -2,7 +2,7 @@
     <v-container>
         <v-data-table hide-default-footer :headers="headers" :items="pluginList">
             <template v-slot:[`item.buttons`]="{ item }">
-                <v-btn @click="getPlugin(item.name)" text color="secondary">
+                <v-btn @click="getPlugin(item)" text color="secondary">
                     Select
                 </v-btn>
             </template>

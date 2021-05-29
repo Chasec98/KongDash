@@ -1,33 +1,29 @@
+import { snackbarModuletypes as types } from '../mutation-types';
+
 const state = () => ({
   message: "",
-  open: false
+  show: false
 });
 
 const getters = {};
 
 const actions = {
   addMessage({ commit }, message) {
-    commit("addMessage", message);
-    commit("openSnackbar");
+    commit(types.SET_MESSAGE, message);
+    commit(types.SET_SHOW_SNACKBAR, true);
   },
   close({ commit }) {
-    commit("closeSnackbar");
-    commit("clearMessages");
+    commit(types.SET_SHOW_SNACKBAR, false);
+    commit(types.SET_MESSAGE, null);
   }
 };
 
 const mutations = {
-  addMessage(state, message) {
+  [types.SET_MESSAGE](state, message) {
     state.message = message;
   },
-  clearMessages(state) {
-    state.messages = [];
-  },
-  closeSnackbar(state) {
-    state.open = false;
-  },
-  openSnackbar(state) {
-    state.open = true;
+  [types.SET_SHOW_SNACKBAR](state, show) {
+    state.show = show;
   }
 };
 

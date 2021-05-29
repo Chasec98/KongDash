@@ -9,47 +9,24 @@
         </v-btn>
         </v-card-actions>
         </v-card>
-        <v-card v-if="selectedPlugin">
-            <v-card-title>{{ selectedPlugin.displayName }}</v-card-title>
-            <v-container>
-                <p>* = optional</p>
-                <v-row v-for="param in selectedPlugin.parameters" v-bind:key="param.name">
-                    <v-col v-if="param.editable === true">
-                        <v-text-field :label="param.displayName" :v-model="param.default || param.value" v-if="param.type === `String`" v-model="param.value"></v-text-field>
-                        <v-text-field :label="param.displayName" v-if="param.type === `Number`" type="number" v-model="param.value"></v-text-field>
-                        <v-switch :label="param.displayName" v-if="param.type === 'Boolean'" v-model="param.value"></v-switch>
-                        <v-select label="Route" v-if="param.type === 'Routes'" v-model="param.value" :items="routes" :item-text="resourceName" return-object></v-select>
-                        <v-select label="Service" v-if="param.type === 'Services'" v-model="param.value" :items="services" :item-text="resourceName" return-object></v-select>
-                        <v-select :label="param.displayName" :items="param.items" v-model="param.value" v-if="param.type ==='Array'" :multiple="param.multiple || false"></v-select>
-                        <v-combobox :label="param.displayName" :items="param.items" v-model="param.value" v-if="param.type === 'Combobox'" small-chips multiple></v-combobox>
-                    </v-col>
-                </v-row>
-            </v-container>
-            <v-card-actions>
-                <v-btn text @click="closePlugin">
-                    Cancel
-                </v-btn>
-                <v-spacer></v-spacer>
-                <v-btn text @click="submit">
-                    Submit
-                </v-btn>
-            </v-card-actions>
-        </v-card>
+        <Plugin v-if="selectedPlugin" :plugin="selectedPlugin" @closePlugin="closePlugin" @submit="submit"></Plugin>
     </div>
 </template>
 
 <script>
 import PluginsList from './PluginsList';
+import Plugin from './Plugin';
+
 const plugins = require('../../configs/plugins.json');
-import { mapState, mapActions } from 'vuex';
+
+import { mapActions } from 'vuex';
 const dot = require('dot-object');
+
 export default {
+    name: 'Plugins',
     components: {
         PluginsList,
-    },
-    mounted() {
-        this.$store.dispatch("services/getServices");
-        this.$store.dispatch("routes/getRoutes");
+        Plugin,
     },
     data: () => ({
         selectHeaders: [
@@ -61,31 +38,46 @@ export default {
         selectedPlugin: undefined,
         pluginModel: {}
     }),
+    mounted() {
+        this.$store.dispatch("services/getServices");
+        this.$store.dispatch("routes/getRoutes");
+    },
     methods: {
         ...mapActions("plugins", ["updatePlugin", "createPlugin"]),
         close() {
             this.$emit("close");
         },
-        submit() {
-            this.createPlugin(this.apiPlugin);
+        submit(plugin) {
+            const apiPlugin = this.convertToAPIPlugin(plugin);
+            this.createPlugin(apiPlugin);
             this.selectedPlugin = undefined;
             this.close();
         },
         closePlugin() {
             this.selectedPlugin = undefined;
         },
-        resourceName(r) {
-            return `${r.name} - ${r.id}`
-        },
-        getPlugin(name) {
-            console.log(name)
-            this.selectedPlugin = this.plugins.filter(e => e.name === name)[0]
+        getPlugin(plugin) {
+            this.selectedPlugin = plugin
         },
         convertPlugin(plugin) {
             for (let [key, value] of Object.entries(plugin)) {
                 console.log(`${key}: ${value}`);
             }
-        }
+        },
+        convertToAPIPlugin(plugin) {
+            if (plugin) {
+                let r = {}
+                plugin.parameters.forEach(p => {
+                    if (p.type === "Number") {
+                        p.value = Number(p.value)
+                    }
+                    dot.str(p.name, p.value, plugin)
+                })
+                return r
+            } else {
+                return {}
+            }
+        },
       },
     computed: {
         plugins() {
@@ -100,24 +92,6 @@ export default {
                 }
             })
         },
-        apiPlugin(){
-            if (this.selectedPlugin) {
-                let plugin = {}
-                this.selectedPlugin.parameters.forEach(p => {
-                    if (p.type === "Number") {
-                        p.value = Number(p.value)
-                    }
-                    dot.str(p.name, p.value, plugin)
-                })
-                return plugin
-            } else {
-                return {}
-            }
-        },
-        ...mapState({
-            routes: state => state.routes.data,
-            services: state => state.services.data
-        }),
     },
 }
 </script>

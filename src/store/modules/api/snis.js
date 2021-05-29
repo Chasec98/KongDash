@@ -1,5 +1,7 @@
 import Vue from "vue";
 
+import { snisAPIModuleTypes as types } from '../../mutation-types';
+
 const state = () => ({
   data: [],
   next: ""
@@ -12,8 +14,8 @@ const actions = {
     Vue.axios
       .get("/snis")
       .then(resp => {
-        commit("setSNIs", resp.data.data);
-        commit("setNext", resp.data.next);
+        commit(types.SET_API_SNIS_DATA, resp.data.data);
+        commit(types.SET_API_SNIS_NEXT, resp.data.next);
       })
       .catch(err => {
         dispatch(
@@ -68,10 +70,10 @@ const actions = {
 };
 
 const mutations = {
-  setSNIs(state, snis) {
+  [types.SET_API_SNIS_DATA](state, snis) {
     state.data = snis;
   },
-  setNext(state, next) {
+  [types.SET_API_SNIS_NEXT](state, next) {
     state.next = next;
   }
 };

@@ -1,5 +1,7 @@
 import Vue from "vue";
 
+import { upstreamsAPIModuleTypes as types } from '../../mutation-types';
+
 const state = () => ({
   data: [],
   next: ""
@@ -12,8 +14,8 @@ const actions = {
     Vue.axios
       .get("/upstreams")
       .then(resp => {
-        commit("setUpstreams", resp.data.data);
-        commit("setNext", resp.data.next);
+        commit(types.SET_API_UPSTREAMS_DATA, resp.data.data);
+        commit(types.SET_API_UPSTREAMS_NEXT, resp.data.next);
       })
       .catch(err => {
         dispatch(
@@ -68,10 +70,10 @@ const actions = {
 };
 
 const mutations = {
-  setUpstreams(state, upstreams) {
+  [types.SET_API_UPSTREAMS_DATA](state, upstreams) {
     state.data = upstreams;
   },
-  setNext(state, next) {
+  [types.SET_API_UPSTREAMS_NEXT](state, next) {
     state.next = next;
   }
 };

@@ -10,14 +10,20 @@
     />
     <v-dialog width="500" v-model="consumerModalOpen">
       <ConsumerModal
+        v-if="!selectedPlugin"
         :consumer="selectedConsumer"
         @cancel="closeConsumerModal"
       />
+      <ConsumerPlugin 
+        v-if="selectedPlugin"
+        :plugin="selectedPlugin"
+      ></ConsumerPlugin>
     </v-dialog>
   </div>
 </template>
 <script>
 import Table from "../components/Table";
+import ConsumerPlugin from '../components/consumers/ConsumerPlugin';
 import ConsumerModal from "../components/consumers/ConsumerModal";
 import { mapState, mapActions } from "vuex";
 export default {
@@ -28,11 +34,13 @@ export default {
       { text: "ID", value: "id" }
     ],
     selectedConsumer: undefined,
-    consumerModalOpen: false
+    consumerModalOpen: false,
+    selectedPlugin: null,
   }),
   components: {
     Table,
-    ConsumerModal
+    ConsumerModal,
+    ConsumerPlugin,
   },
   created() {
     this.$store.dispatch("consumers/getConsumers");

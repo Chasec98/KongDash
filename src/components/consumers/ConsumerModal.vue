@@ -42,7 +42,7 @@
   </v-card>
 </template>
 <script>
-import ConsumerPlugins from './Plugins'
+import ConsumerPlugins from './ConsumerPlugins'
 import { mapActions } from "vuex";
 export default {
   components: {

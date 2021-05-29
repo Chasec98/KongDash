@@ -1,5 +1,7 @@
 import Vue from "vue";
 
+import { pluginsAPIModuleTypes as types } from '../../mutation-types'
+
 const state = () => ({
   data: [],
   next: ""
@@ -12,8 +14,8 @@ const actions = {
     Vue.axios
       .get("/plugins")
       .then(resp => {
-        commit("setPlugins", resp.data.data);
-        commit("setNext", resp.data.next);
+        commit(types.SET_API_PLUGINS_DATA, resp.data.data);
+        commit(types.SET_API_PLUGINS_NEXT, resp.data.next);
       })
       .catch(err => {
         dispatch(
@@ -68,10 +70,10 @@ const actions = {
 };
 
 const mutations = {
-  setPlugins(state, plugins) {
+  [types.SET_API_PLUGINS_DATA](state, plugins) {
     state.data = plugins;
   },
-  setNext(state, next) {
+  [types.SET_API_PLUGINS_NEXT](state, next) {
     state.next = next;
   }
 };
