@@ -67,6 +67,82 @@
                 "value": 600,
                 "editable": true,
                 "type": "Number"
+            },
+            {
+                "name": "config.cookie_path",
+                "displayName": "Cookie Path",
+                "value": "/",
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "config.cookie_domain",
+                "displayName": "Cookie Domain",
+                "editable": true,
+                "value": null,
+                "type": "String"
+            },
+            {
+                "name": "config.cookie_samesite",
+                "displayName": "Cookie SameSite",
+                "editable": true,
+                "items": ["None", "Strict", "Lax"],
+                "value": "Strict",
+                "multiple": false,
+                "type": "Array"
+            },
+            {
+                "name": "config.cookie_httponly",
+                "displayName": "Cookie HTTPOnly",
+                "editable": true,
+                "value": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.cookie_secure",
+                "displayName": "Cookie Secure",
+                "editable": true,
+                "value": true,
+                "type": "Boolean"
+            },
+            {
+                "name": "config.cookie_discard",
+                "displayName": "Cookie Discard",
+                "editable": true,
+                "value": 10,
+                "type": "Number"
+            },
+            {
+                "name": "config.storage",
+                "displayName": "Storage",
+                "editable": true,
+                "items": ["kong", "cookie"],
+                "value": "cookie",
+                "multiple": false,
+                "type": "Array"
+            },
+            {
+                "name": "config.logout_methods",
+                "displayName": "Logout Methods",
+                "editable": true,
+                "items": ["POST", "DELETE", "GET"],
+                "value": ["POST", "DELETE"],
+                "multiple": true,
+                "type": "Array"
+            },
+            {
+                "name": "config.logout_query_arg",
+                "displayName": "Logout Query Argument",
+                "editable": true,
+                "value": "session_logout",
+                "type": "String"
+            },
+            {
+                "name": "config.logout_post_arg",
+                "displayName": "Logout POST Argument",
+                "editable": true,
+                "value": "session_logout",
+                "type": "String"
             }
         ]
     },
