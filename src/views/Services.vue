@@ -8,14 +8,14 @@
       @add="addService"
       @delete="deleteService"
     />
-    <v-dialog width="500" v-model="serviceModalOpen">
-      <ServiceModal :service="selectedService" @cancel="closeServiceModal" />
+    <v-dialog width="500" v-model="ServiceCardOpen">
+      <ServiceCard :service="selectedService" @cancel="closeServiceCard" />
     </v-dialog>
   </div>
 </template>
 <script>
 import Table from "../components/Table";
-import ServiceModal from "../components/services/ServiceModal";
+import ServiceCard from "../components/services/ServiceCard";
 import { mapState, mapActions } from "vuex";
 export default {
   data: () => ({
@@ -27,11 +27,11 @@ export default {
       { text: "ID", value: "id" }
     ],
     selectedService: undefined,
-    serviceModalOpen: false
+    ServiceCardOpen: false
   }),
   components: {
     Table,
-    ServiceModal
+    ServiceCard
   },
   created() {
     this.$store.dispatch("services/getServices");
@@ -43,15 +43,15 @@ export default {
     ...mapActions("services", ["deleteService"]),
     editService(service) {
       this.selectedService = service;
-      this.serviceModalOpen = true;
+      this.ServiceCardOpen = true;
     },
-    closeServiceModal() {
-      this.serviceModalOpen = false;
+    closeServiceCard() {
+      this.ServiceCardOpen = false;
       this.selectedService = undefined;
     },
     addService() {
       this.selectedService = undefined;
-      this.serviceModalOpen = true;
+      this.ServiceCardOpen = true;
     }
   }
 };

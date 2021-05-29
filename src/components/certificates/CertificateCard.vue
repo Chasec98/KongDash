@@ -40,7 +40,9 @@
 
 <script>
 import { mapActions } from "vuex";
+
 export default {
+  name: 'CertificateCard',
   props: {
     certificate: {
       type: Object,
@@ -61,7 +63,6 @@ export default {
       if (this.certificate.id) {
         this.updateCertificate(this.certificate);
       } else {
-        console.log("creating cert");
         this.createCertificate(this.certificate);
       }
       this.$emit("cancel");

@@ -59,7 +59,7 @@ export default {
     }),
     snackbarOpen: {
       get() {
-        return this.snackbar.open;
+        return this.snackbar.show;
       },
       set(value) {
         if (!value) {

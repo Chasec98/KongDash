@@ -8,17 +8,23 @@
       @add="addConsumer"
       @delete="deleteConsumer"
     />
-    <v-dialog width="500" v-model="consumerModalOpen">
-      <ConsumerModal
+    <v-dialog width="500" v-model="ConsumerOpen">
+      <ConsumerCard
+        v-if="!selectedPlugin"
         :consumer="selectedConsumer"
-        @cancel="closeConsumerModal"
+        @cancel="closeConsumer"
       />
+      <ConsumerPlugin 
+        v-if="selectedPlugin"
+        :plugin="selectedPlugin"
+      ></ConsumerPlugin>
     </v-dialog>
   </div>
 </template>
 <script>
 import Table from "../components/Table";
-import ConsumerModal from "../components/consumers/ConsumerModal";
+import ConsumerPlugin from '../components/consumers/ConsumerPlugin';
+import ConsumerCard from "../components/consumers/ConsumerCard";
 import { mapState, mapActions } from "vuex";
 export default {
   data: () => ({
@@ -28,31 +34,33 @@ export default {
       { text: "ID", value: "id" }
     ],
     selectedConsumer: undefined,
-    consumerModalOpen: false
+    ConsumerOpen: false,
+    selectedPlugin: null,
   }),
   components: {
     Table,
-    ConsumerModal
+    ConsumerCard,
+    ConsumerPlugin,
   },
   created() {
-    this.$store.dispatch("consumers/getConsumers");
+    this.$store.dispatch("apiConsumers/getConsumers");
   },
   computed: mapState({
-    consumers: state => state.consumers.data
+    consumers: state => state.apiConsumers.data
   }),
   methods: {
-    ...mapActions("consumers", ["deleteConsumer"]),
-    closeConsumerModal() {
-      this.consumerModalOpen = false;
+    ...mapActions("apiConsumers", ["deleteConsumer"]),
+    closeConsumer() {
+      this.ConsumerOpen = false;
       this.selectedConsumer = undefined;
     },
     addConsumer() {
       this.selectedConsumer = undefined;
-      this.consumerModalOpen = true;
+      this.ConsumerOpen = true;
     },
     editConsumer(consumer) {
       this.selectedConsumer = consumer;
-      this.consumerModalOpen = true;
+      this.ConsumerOpen = true;
     }
   }
 };

@@ -8,14 +8,14 @@
       @add="addUpstream"
       @delete="deleteUpstream"
     />
-    <v-dialog width="500" v-model="upstreamModalOpen">
-      <UpstreamModal :upstream="selectedUpstream" @cancel="closeUpstream" />
+    <v-dialog width="500" v-model="UpstreamCardOpen">
+      <UpstreamCard :upstream="selectedUpstream" @cancel="closeUpstream" />
     </v-dialog>
   </div>
 </template>
 <script>
 import Table from "../components/Table";
-import UpstreamModal from "../components/upstreams/UpstreamModal";
+import UpstreamCard from "../components/upstreams/UpstreamCard";
 import { mapState, mapActions } from "vuex";
 export default {
   data: () => ({
@@ -25,11 +25,11 @@ export default {
       { text: "ID", value: "id" }
     ],
     selectedUpstream: undefined,
-    upstreamModalOpen: undefined
+    UpstreamCardOpen: undefined
   }),
   components: {
     Table,
-    UpstreamModal
+    UpstreamCard
   },
   created() {
     this.$store.dispatch("upstreams/getUpstreams");
@@ -40,16 +40,16 @@ export default {
   methods: {
     ...mapActions("upstreams", ["deleteUpstream"]),
     closeUpstream() {
-      this.upstreamModalOpen = false;
+      this.UpstreamCardOpen = false;
       this.selectedUpstream = undefined;
     },
     editUpstream(upstream) {
       this.selectedUpstream = upstream;
-      this.upstreamModalOpen = true;
+      this.UpstreamCardOpen = true;
     },
     addUpstream() {
       this.selectedUpstream = undefined;
-      this.upstreamModalOpen = true;
+      this.UpstreamCardOpen = true;
     }
   }
 };

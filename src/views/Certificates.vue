@@ -9,9 +9,9 @@
       @delete="deleteCertificate"
     ></Table>
     <v-dialog width="500" v-model="certificateModalOpen">
-      <CertificatesModal
+      <CertificateCard
         :certificate="selectedCertificate"
-        @cancel="closeCertificatesModal"
+        @cancel="closeCertificate"
       />
     </v-dialog>
   </div>
@@ -20,11 +20,11 @@
 <script>
 import Table from "../components/Table";
 import { mapState, mapActions } from "vuex";
-import CertificatesModal from "../components/certificates/CertificatesModal";
+import CertificateCard from "../components/certificates/CertificateCard";
 export default {
   components: {
     Table,
-    CertificatesModal
+    CertificateCard
   },
   methods: {
     ...mapActions("certificates", ["deleteCertificate"]),
@@ -32,7 +32,7 @@ export default {
       this.selectedCertificate = certificate;
       this.certificateModalOpen = true;
     },
-    closeCertificatesModal() {
+    closeCertificate() {
       this.certificateModalOpen = false;
       this.selectedCertificate = undefined;
     },

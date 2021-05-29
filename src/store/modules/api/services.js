@@ -1,5 +1,7 @@
 import Vue from "vue";
 
+import { servicesAPIModuleTypes as types } from '../../mutation-types';
+
 const state = () => ({
   data: [],
   next: ""
@@ -12,8 +14,8 @@ const actions = {
     Vue.axios
       .get("/services")
       .then(resp => {
-        commit("setServices", resp.data.data);
-        commit("setNext", resp.data.next);
+        commit(types.SET_API_SERVICES_DATA, resp.data.data);
+        commit(types.SET_API_SERVICES_NEXT, resp.data.next);
       })
       .catch(err => {
         dispatch(
@@ -68,10 +70,10 @@ const actions = {
 };
 
 const mutations = {
-  setServices(state, services) {
+  [types.SET_API_SERVICES_DATA](state, services) {
     state.data = services;
   },
-  setNext(state, next) {
+  [types.SET_API_SERVICES_NEXT](state, next) {
     state.next = next;
   }
 };
