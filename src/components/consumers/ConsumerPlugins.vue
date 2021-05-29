@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import PluginList from '../plugins/PluginsList';
+import { PluginList } from '../plugins';
 
 export default {
     name: 'ConsumerPlugins',

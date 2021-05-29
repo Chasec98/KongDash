@@ -9,24 +9,32 @@
       @delete="deletePlugin"
     />
     <v-dialog width="500" v-model="pluginsModalOpen">
-          <Plugins @close="closeModal" :plugin="plugin"></Plugins>
+          <PluginsCard v-if="!plugin" @close="closeModal"></PluginsCard>
+          <Plugin v-if="plugin" @close="closePlugin" @submit="submitPlugin"></Plugin>
     </v-dialog>
   </div>
 </template>
 <script>
-import Plugins from "../components/plugins/Plugins";
+import { PluginsCard, Plugin } from '../components/plugins';
 import Table from "../components/Table";
-import { mapState, mapActions } from "vuex";
+
+import { mapState, mapActions, mapMutations } from "vuex";
+import { consumerModuleTypes } from '../store/mutation-types';
+
+const dot = require('dot-object');
+
 export default {
   components: {
-    Plugins,
+    PluginsCard,
+    Plugin,
     Table
   },
   created() {
     this.$store.dispatch("plugins/getPlugins");
   },
   computed: mapState({
-    plugins: state => state.plugins.data
+    plugins: state => state.plugins.data,
+    plugin: state => state.consumers.selectedPlugin
   }),
   data: () => ({
     pluginsModalOpen: false,
@@ -37,21 +45,41 @@ export default {
       { text: "Route", value: "route" },
       { text: "ID", value: "id" }
     ],
-    plugin: {}
   }),
   methods: {
     closeModal(){
-      this.plugin = {}
       this.pluginsModalOpen = false;
+      this.setPlugin(null);
+    },
+    closePlugin() {
+      this.setPlugin(null);
     },
     openModal() {
       this.pluginsModalOpen = true;
     },
     editPlugin(plugin){
-      this.plugin = plugin;
+      this.setPlugin(plugin);
       this.pluginsModalOpen = true;
     },
-    ...mapActions("plugins", ["deletePlugin"])
+    submitPlugin(plugin) {
+      const apiPlugin = this.convertToAPIPlugin(plugin);
+      this.createPlugin(apiPlugin);
+      this.setPlugin(null);
+    },
+    convertToAPIPlugin(plugin) {
+      let r = {}
+      plugin.parameters.forEach(p => {
+          if (p.type === "Number") {
+              p.value = Number(p.value)
+          }
+          dot.str(p.name, p.value, r)
+      })
+      return r
+    },
+    ...mapActions("plugins", ["deletePlugin", "createPlugin", "updatePlugin"]),
+    ...mapMutations("consumers", {
+        setPlugin: consumerModuleTypes.SET_SELECTED_CONSUMER_PLUGIN,
+    }),
   }
 };
 </script>

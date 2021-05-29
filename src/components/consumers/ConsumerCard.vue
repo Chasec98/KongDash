@@ -45,6 +45,7 @@
 import ConsumerPlugins from './ConsumerPlugins'
 import { mapActions } from "vuex";
 export default {
+  name: 'ConsumerCard',
   components: {
     ConsumerPlugins
   },
@@ -63,7 +64,7 @@ export default {
     tab: 'tab-1'
   }),
   methods: {
-    ...mapActions("consumers", ["updateConsumer", "createConsumer"]),
+    ...mapActions("apiConsumers", ["updateConsumer", "createConsumer"]),
     cancelClicked() {
       this.$emit("cancel");
     },

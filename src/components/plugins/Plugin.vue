@@ -16,7 +16,7 @@
             </v-row>
         </v-container>
         <v-card-actions>
-            <v-btn text @click="closePlugin">
+            <v-btn text @click="close">
                 Back
             </v-btn>
             <v-spacer></v-spacer>
@@ -32,15 +32,9 @@ import { mapState } from 'vuex';
 
 export default {
     name: 'Plugin',
-    props: {
-        plugin: {
-            type: Object,
-            default: () => ({}),
-        }
-    },
     methods: {
-        closePlugin() {
-            this.$emit('closePlugin')
+        close() {
+            this.$emit('close');
         },
         submit() {
             this.$emit('submit', this.plugin)
@@ -52,7 +46,8 @@ export default {
     computed: {
         ...mapState({
             routes: state => state.routes.data,
-            services: state => state.services.data
+            services: state => state.services.data,
+            plugin: state => state.consumers.selectedPlugin
         }),
     }
 }

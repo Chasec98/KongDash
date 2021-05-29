@@ -113,6 +113,7 @@
 import { mapActions } from "vuex";
 import constants from "../../constants";
 export default {
+  name: 'ServiceCard',
   props: {
     service: {
       type: Object,

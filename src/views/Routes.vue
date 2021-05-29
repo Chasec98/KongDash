@@ -8,14 +8,15 @@
       @add="addRoute"
       @delete="deleteRoute"
     />
-    <v-dialog width="500" v-model="routeModalOpen">
-      <RouteModal :route="selectedRoute" @cancel="closeRouteModal" />
+    <v-dialog width="500" v-model="RouteCardOpen">
+      <RouteCard :route="selectedRoute" @cancel="closeRouteCard" />
     </v-dialog>
   </div>
 </template>
 <script>
 import Table from "../components/Table";
-import RouteModal from "../components/routes/RouteModal";
+import RouteCard from "../components/routes/RouteCard";
+
 import { mapState, mapActions } from "vuex";
 export default {
   data: () => ({
@@ -28,11 +29,11 @@ export default {
       { text: "ID", value: "id" }
     ],
     selectedRoute: undefined,
-    routeModalOpen: false
+    RouteCardOpen: false
   }),
   components: {
     Table,
-    RouteModal
+    RouteCard
   },
   created() {
     this.$store.dispatch("routes/getRoutes");
@@ -42,17 +43,17 @@ export default {
   }),
   methods: {
     ...mapActions("routes", ["deleteRoute"]),
-    closeRouteModal() {
-      this.routeModalOpen = false;
+    closeRouteCard() {
+      this.RouteCardOpen = false;
       this.selectedRoute = undefined;
     },
     addRoute() {
       this.selectedRoute = undefined;
-      this.routeModalOpen = true;
+      this.RouteCardOpen = true;
     },
     editRoute(route) {
       this.selectedRoute = route;
-      this.routeModalOpen = true;
+      this.RouteCardOpen = true;
     }
   }
 };

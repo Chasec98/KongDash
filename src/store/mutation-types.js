@@ -2,7 +2,6 @@
 
 export const consumerModuleTypes = {
     SET_SELECTED_CONSUMER_PLUGIN: 'SET_SELECTED_CONSUMER_PLUGIN',
-    UNSET_SELECTED_CONSUMER_PLUGIN: 'UNSET_SELECTED_CONSUMER_PLUGIN',
 };
 
 export const snackbarModuletypes = {

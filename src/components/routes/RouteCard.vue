@@ -1,5 +1,4 @@
 <template>
-  <!-- SNIs -->
   <v-card class="modal">
     <v-card-title>{{ title }}</v-card-title>
     <v-container>
@@ -132,6 +131,7 @@
 import { mapState, mapActions } from "vuex";
 import constants from "../../constants";
 export default {
+  name: 'RouteCard',
   props: {
     route: {
       type: Object,

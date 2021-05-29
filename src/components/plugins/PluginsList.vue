@@ -2,7 +2,7 @@
     <v-container>
         <v-data-table hide-default-footer :headers="headers" :items="pluginList">
             <template v-slot:[`item.buttons`]="{ item }">
-                <v-btn @click="getPlugin(item)" text color="secondary">
+                <v-btn @click="setPlugin(item)" text color="secondary">
                     Select
                 </v-btn>
             </template>
@@ -14,6 +14,9 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+import { consumerModuleTypes } from '../../store/mutation-types';
+
 export default {
     props: {
         consumerView: {
@@ -31,7 +34,7 @@ export default {
         headers: [
             { text: "", value: "image" },
             { text: "Name", value: "displayName" },
-            { text: "", value: "buttons" }
+            { text: "", value: "buttons" },
         ],
     }),
     computed: {
@@ -48,9 +51,9 @@ export default {
         },
     },
     methods: {
-        getPlugin(itemName) {
-            this.$emit('getPlugin', itemName)
-        }
+        ...mapMutations("consumers", {
+            setPlugin: consumerModuleTypes.SET_SELECTED_CONSUMER_PLUGIN
+        }),
     }
 }
 </script>
