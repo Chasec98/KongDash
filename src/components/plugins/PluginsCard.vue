@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { PluginsList } from '.';
+import PluginsList from './PluginsList';
 
 const plugins = require('../../configs/plugins.json');
 
