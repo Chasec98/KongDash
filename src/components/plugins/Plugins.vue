@@ -1,19 +1,8 @@
 <template>
     <div>
-    <v-card v-show="!selectedPlugin" class="modal" id="selectPlugin">
+    <v-card v-show="!selectedPlugin" class="modal">
         <v-card-title>Select Plugin</v-card-title>
-        <v-container>
-            <v-data-table hide-default-footer :headers="selectHeaders" :items="pluginList">
-                <template v-slot:[`item.buttons`]="{ item }">
-                    <v-btn @click="getPlugin(item.name)" text color="secondary">
-                        Select
-                    </v-btn>
-                </template>
-                <template v-slot:[`item.image`]="{ item }">
-                    <v-img max-width="40px" :src="item.image"></v-img>
-                </template>
-            </v-data-table>
-        </v-container>
+            <PluginsList :plugins="plugins" @getPlugin="getPlugin"></PluginsList>
         <v-card-actions>
         <v-btn text @click="close">
           Cancel
@@ -50,10 +39,14 @@
 </template>
 
 <script>
+import PluginsList from './PluginsList';
 const plugins = require('../../configs/plugins.json');
 import { mapState, mapActions } from 'vuex';
 const dot = require('dot-object');
 export default {
+    components: {
+        PluginsList,
+    },
     mounted() {
         this.$store.dispatch("services/getServices");
         this.$store.dispatch("routes/getRoutes");
@@ -85,6 +78,7 @@ export default {
             return `${r.name} - ${r.id}`
         },
         getPlugin(name) {
+            console.log(name)
             this.selectedPlugin = this.plugins.filter(e => e.name === name)[0]
         },
         convertPlugin(plugin) {

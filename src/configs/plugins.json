@@ -74,6 +74,15 @@
         "displayName": "Key Authentication",
         "name":"key-auth",
         "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_key-auth.png",
+        "consumer_parameters": [
+            {
+                "name": "key",
+                "displayName": "Key",
+                "value": null,
+                "editable": true,
+                "type": "String"
+            }
+        ],
         "parameters": [
             {
                 "name": "name",
