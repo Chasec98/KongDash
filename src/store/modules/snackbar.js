@@ -1,4 +1,4 @@
-import { snackbarModuletypes as types } from '../mutation-types';
+import { snackbarModuletypes as types } from "../mutation-types";
 
 const state = () => ({
   message: "",

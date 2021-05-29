@@ -27,7 +27,7 @@
         </v-container>
       </v-tab-item>
       <v-tab-item key="tab-2">
-        <ConsumerPlugins/>
+        <ConsumerPlugins />
       </v-tab-item>
     </v-tabs-items>
     <v-card-actions>
@@ -42,10 +42,10 @@
   </v-card>
 </template>
 <script>
-import ConsumerPlugins from './ConsumerPlugins'
+import ConsumerPlugins from "./ConsumerPlugins";
 import { mapActions } from "vuex";
 export default {
-  name: 'ConsumerCard',
+  name: "ConsumerCard",
   components: {
     ConsumerPlugins
   },
@@ -61,7 +61,7 @@ export default {
     }
   },
   data: () => ({
-    tab: 'tab-1'
+    tab: "tab-1"
   }),
   methods: {
     ...mapActions("apiConsumers", ["updateConsumer", "createConsumer"]),

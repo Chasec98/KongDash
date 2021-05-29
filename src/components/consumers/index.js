@@ -1,9 +1,5 @@
-import ConsumerCard from './ConsumerCard';
-import ConsumerPlugins from './ConsumerPlugins';
-import ConsumerPlugin from './ConsumerPlugin';
+import ConsumerCard from "./ConsumerCard";
+import ConsumerPlugins from "./ConsumerPlugins";
+import ConsumerPlugin from "./ConsumerPlugin";
 
-export {
-    ConsumerCard,
-    ConsumerPlugin,
-    ConsumerPlugins,
-}
+export { ConsumerCard, ConsumerPlugin, ConsumerPlugins };

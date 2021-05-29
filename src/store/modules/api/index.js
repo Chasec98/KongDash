@@ -8,12 +8,12 @@ import consumers from "./consumers";
 import snis from "./snis";
 
 export {
-    services,
-    routes,
-    plugins,
-    upstreams,
-    certificates,
-    targets,
-    consumers,
-    snis,
+  services,
+  routes,
+  plugins,
+  upstreams,
+  certificates,
+  targets,
+  consumers,
+  snis
 };

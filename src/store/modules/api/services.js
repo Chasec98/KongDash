@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-import { servicesAPIModuleTypes as types } from '../../mutation-types';
+import { servicesAPIModuleTypes as types } from "../../mutation-types";
 
 const state = () => ({
   data: [],

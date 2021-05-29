@@ -131,7 +131,7 @@
 import { mapState, mapActions } from "vuex";
 import constants from "../../constants";
 export default {
-  name: 'RouteCard',
+  name: "RouteCard",
   props: {
     route: {
       type: Object,

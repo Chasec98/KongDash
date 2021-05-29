@@ -1,7 +1,4 @@
-import snackbar from './snackbar';
-import consumers from './consumers';
+import snackbar from "./snackbar";
+import consumers from "./consumers";
 
-export {
-    snackbar,
-    consumers,
-}
+export { snackbar, consumers };

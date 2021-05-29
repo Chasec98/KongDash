@@ -41,7 +41,7 @@
 import { mapActions } from "vuex";
 import constants from "../../constants";
 export default {
-  name: 'UpstreamCard',
+  name: "UpstreamCard",
   props: {
     upstream: {
       default: () => ({

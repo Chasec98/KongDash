@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 import { snackbar, consumers } from "./modules";
-import { 
+import {
   snis,
   consumers as apiConsumers,
   certificates,
@@ -10,8 +10,8 @@ import {
   plugins,
   targets,
   routes,
-  services,
- } from './modules/api'
+  services
+} from "./modules/api";
 
 Vue.use(Vuex);
 

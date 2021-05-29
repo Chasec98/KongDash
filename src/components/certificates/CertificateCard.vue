@@ -42,7 +42,7 @@
 import { mapActions } from "vuex";
 
 export default {
-  name: 'CertificateCard',
+  name: "CertificateCard",
   props: {
     certificate: {
       type: Object,

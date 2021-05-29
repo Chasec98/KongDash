@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-import { certificatesAPIModuleTypes as types } from '../../mutation-types';
+import { certificatesAPIModuleTypes as types } from "../../mutation-types";
 
 const state = () => ({
   data: [],

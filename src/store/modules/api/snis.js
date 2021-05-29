@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-import { snisAPIModuleTypes as types } from '../../mutation-types';
+import { snisAPIModuleTypes as types } from "../../mutation-types";
 
 const state = () => ({
   data: [],

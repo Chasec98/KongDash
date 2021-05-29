@@ -1,10 +1,10 @@
 import Vue from "vue";
 
-import { consumersAPIModuleTypes as types } from '../../mutation-types';
+import { consumersAPIModuleTypes as types } from "../../mutation-types";
 
 const state = () => ({
   data: [],
-  next: "",
+  next: ""
 });
 
 const getters = {};

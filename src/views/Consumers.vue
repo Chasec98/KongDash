@@ -14,7 +14,7 @@
         :consumer="selectedConsumer"
         @cancel="closeConsumer"
       />
-      <ConsumerPlugin 
+      <ConsumerPlugin
         v-if="selectedPlugin"
         :plugin="selectedPlugin"
       ></ConsumerPlugin>
@@ -23,7 +23,7 @@
 </template>
 <script>
 import Table from "../components/Table";
-import ConsumerPlugin from '../components/consumers/ConsumerPlugin';
+import ConsumerPlugin from "../components/consumers/ConsumerPlugin";
 import ConsumerCard from "../components/consumers/ConsumerCard";
 import { mapState, mapActions } from "vuex";
 export default {
@@ -35,12 +35,12 @@ export default {
     ],
     selectedConsumer: undefined,
     ConsumerOpen: false,
-    selectedPlugin: null,
+    selectedPlugin: null
   }),
   components: {
     Table,
     ConsumerCard,
-    ConsumerPlugin,
+    ConsumerPlugin
   },
   created() {
     this.$store.dispatch("apiConsumers/getConsumers");
