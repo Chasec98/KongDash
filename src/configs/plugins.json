@@ -244,6 +244,22 @@
         "displayName": "Basic Authentication",
         "name":"basic-auth",
         "image": "https://docs.konghq.com/assets/images/icons/hub/kong-inc_basic-auth.png",
+        "consumer_parameters": [
+            {
+                "name": "username",
+                "displayName": "Username",
+                "value": null,
+                "editable": true,
+                "type": "String"
+            },
+            {
+                "name": "password",
+                "displayName": "Password",
+                "value": null,
+                "editable": true,
+                "type": "String"
+            }
+        ],
         "parameters": [
             {
                 "name": "name",

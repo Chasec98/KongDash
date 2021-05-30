@@ -1,15 +1,19 @@
 <template>
   <v-card>
     <v-card-title>{{ plugin.displayName }}</v-card-title>
+    <v-container>
     <p>* = optional</p>
-    <v-row v-for="param in plugin.consumer_parameters" v-bind:key="param.name">
-      <v-text-field
-        :label="param.displayName"
-        :v-model="param.default || param.value"
-        v-if="param.type === `String`"
-        v-model="param.value"
-      ></v-text-field>
-    </v-row>
+      <v-row v-for="param in plugin.consumer_parameters" v-bind:key="param.name">
+        <v-col>
+          <v-text-field
+            :label="param.displayName"
+            :v-model="param.default || param.value"
+            v-if="param.type === `String`"
+            v-model="param.value"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+    </v-container>
     <v-card-actions>
       <v-btn text @click="closePlugin">
         Back
@@ -23,14 +27,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: "ConsumerPlugin",
-  props: {
-    plugin: {
-      type: Object,
-      default: () => ({})
-    }
-  },
   methods: {
     closePlugin() {
       this.$emit("closePlugin");
@@ -38,6 +38,11 @@ export default {
     submit() {
       this.$emit("submit", this.plugin);
     }
+  },
+  computed: {
+    ...mapState({
+      plugin: state => state.consumers.selectedPlugin
+    })
   }
 };
 </script>

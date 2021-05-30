@@ -2,12 +2,11 @@
   <PluginList
     :consumerView="true"
     :plugins="pluginsList"
-    @getPlugin="getPlugin"
   ></PluginList>
 </template>
 
 <script>
-import { PluginList } from "../plugins";
+import PluginList from "../plugins/PluginsList";
 
 export default {
   name: "ConsumerPlugins",
@@ -17,10 +16,5 @@ export default {
   data: () => ({
     pluginsList: require("../../configs/plugins.json")
   }),
-  methods: {
-    getPlugin(plugin) {
-      this.$emit("getPlugin", plugin);
-    }
-  }
 };
 </script>
